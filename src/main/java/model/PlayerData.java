@@ -73,9 +73,6 @@ public class PlayerData {
      * Constructs a new {@code PlayerData}
      */
     public PlayerData() {
-//        this.loadedSongs = new ArrayList<>();
-//        this.queuedSongs = new ArrayList<>();
-//        this.queriedSongs = new ArrayList<>();
         this.loadedSongs = FXCollections.observableArrayList();
         this.queuedSongs = FXCollections.observableArrayList();
         this.queriedSongs = FXCollections.observableArrayList();
@@ -311,6 +308,7 @@ public class PlayerData {
         prepareMediaPlayer(song);
         mediaPlayer.play();
         notifyNetworkPlayerDataObservers(SERVER_NOW_PLAYING);
+        song.extractMetaData();
         notifyGraphicalPlayerDataObservers();
     }
 
@@ -330,7 +328,6 @@ public class PlayerData {
                 mediaPlayer.dispose();
             }
             mediaPlayer = new MediaPlayer(song.getMediaFile());
-            mediaPlayer.setOnReady(song::extractMetaData);
             mediaPlayer.setOnEndOfMedia(this::playNextSong);
         }
     }
@@ -363,6 +360,21 @@ public class PlayerData {
 
 
     /**
+     * Plays or pauses a song.
+     */
+    public void togglePlay() {
+        if(mediaPlayer != null) {
+            if(mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
+                mediaPlayer.pause();
+            }
+            else if (mediaPlayer.getStatus() == MediaPlayer.Status.PAUSED) {
+                mediaPlayer.play();
+            }
+        }
+    }
+
+
+    /**
      * Adds {@code songs} to {@link #loadedSongs} if they are not added already.<br>
      * Extraction is done from {@link PopulateSongsListJob}.
      *
@@ -387,7 +399,12 @@ public class PlayerData {
         }
     }
 
-
+    /**
+     * Closes {@code PlayerData}
+     */
+    public void closePlayerData() {
+        pool.shutdown();
+    }
 
     /**
      *

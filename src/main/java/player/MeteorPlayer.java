@@ -67,6 +67,7 @@ public class MeteorPlayer extends Application {
         playerData = new PlayerData();
         playerDisplay = new PlayerDisplay(playerData);
         initGUI();
+        window.setOnCloseRequest(e -> handleClose());
         window.setScene(scene);
         window.show();
     }
@@ -75,20 +76,31 @@ public class MeteorPlayer extends Application {
         initMenu();
         gridLayout.getColumnConstraints().addAll(new ColumnConstraints(WIDTH_CONSTRAINT),new ColumnConstraints(WIDTH_CONSTRAINT));
         gridLayout.setVgap(15);
+
+        //Get left side: Search bar, currently playing, loaded songs, information
         HBox labelHBox = new HBox();
         labelHBox.getChildren().addAll(new Label(), playerDisplay.getNowPlaying());
         labelHBox.getStyleClass().add("labelHBox");
         gridLayout.add(labelHBox,0,0);
         gridLayout.add(playerDisplay.getloadedSongsView(),0 ,2);
+        gridLayout.add(playerDisplay.getSongInformation(),0,3);
+
+
+        //Get right side: next in queue, queued songs
         gridLayout.add(playerDisplay.getNextInQueue(),1,0);
         gridLayout.add(playerDisplay.getQueuedSongsView(),1,2);
+
+        //Bottom of display, buttons and seek bar.
         previousButton = new Button("<<");
         playButton = new Button("|>");
         nextButton = new Button(">>");
         previousButton.setPrefSize(BUTTON_PREFERED_WIDTH, BUTTON_PREFERED_WIDTH);
         playButton.setPrefSize(BUTTON_PREFERED_WIDTH, BUTTON_PREFERED_WIDTH);
         nextButton.setPrefSize(BUTTON_PREFERED_WIDTH, BUTTON_PREFERED_WIDTH);
+
+
         previousButton.setOnAction(l->playerData.playPreviousLoaded());
+        playButton.setOnAction(l->playerData.togglePlay());
         nextButton.setOnAction(l->playerData.playNextSong());
         HBox hb = new HBox();
         hb.setPrefWidth(BUTTON_BOX_PREFERED_WIDTH);
@@ -134,6 +146,16 @@ public class MeteorPlayer extends Application {
         fileMenu.getStyleClass().add("menu");
         openCommand.getStyleClass().add("menuitem");
     }
+
+
+    /**
+     * Closes MeteorPlayer.<br>
+     * Also shuts down any active pool threads.
+     */
+    private void handleClose() {
+        playerData.closePlayerData();
+    }
+
 
     /**
      * Launches application

@@ -6,6 +6,7 @@ import javafx.scene.media.Media;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -167,13 +168,25 @@ public class MP3Song implements Comparable<MP3Song>{
      *
      */
     public void extractMetaData() {
+        System.out.println("Do I get called?");
         if(!metaDataSet) {
-            ObservableMap<String, Object> metaData  = mediaFile.getMetadata();
-            this.title = metaData.get("title") != null ? metaData.get("title").toString() : " ";
-            this.album = metaData.get("album") != null ? metaData.get("album").toString() : " ";
-            this.artist = metaData.get("artist") != null ? metaData.get("artist").toString() : " ";
-            this.genre = metaData.get("genre") != null ? metaData.get("genre").toString() : " ";
-            this.year = metaData.get("year") != null ? metaData.get("year").toString() : " ";
+            for(Map.Entry<String, Object> entry : mediaFile.getMetadata().entrySet()) {
+                if(entry.getKey().equals("year")) {
+                    year = entry.getValue().toString();
+                }
+                else if(entry.getKey().equals("artist")) {
+                    artist = entry.getValue().toString();
+                }
+                else if(entry.getKey().equals("title")) {
+                    title = entry.getValue().toString();
+                }
+                else if(entry.getKey().equals("genre")) {
+                    genre = entry.getValue().toString();
+                }
+                else if(entry.getKey().equals("album")) {
+                    album = entry.getValue().toString();
+                }
+            }
             metaDataSet = true;
         }
     }

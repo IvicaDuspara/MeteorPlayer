@@ -2,9 +2,11 @@ package gui;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.GridPane;
 import model.PlayerData;
 import observers.GraphicalPlayerDataObserver;
 import song.MP3Song;
+
 
 /**
  * Displays loaded and queued songs.<br>
@@ -26,6 +28,8 @@ public class PlayerDisplay implements GraphicalPlayerDataObserver {
     private Label nowPlaying;
 
     private Label nextInQueue;
+
+    private SongInformation songInformation;
 
 
     /**
@@ -49,6 +53,7 @@ public class PlayerDisplay implements GraphicalPlayerDataObserver {
         loadedSongsView.setPrefWidth(LIST_PREFERED_WIDTH);
         this.nowPlaying.getStyleClass().add("nowPlayingLabel");
         this.nextInQueue.getStyleClass().add("queueLabel");
+        this.songInformation = new SongInformation();
     }
 
 
@@ -107,6 +112,16 @@ public class PlayerDisplay implements GraphicalPlayerDataObserver {
     }
 
 
+    /**
+     * Returns a grid containing meta-data information on currently playing {@link MP3Song}.
+     *
+     * @return
+     *         a grid containing meta-data information on currently playing {@link MP3Song}
+     */
+    public SongInformation getSongInformation() {
+        return songInformation;
+    }
+
 
     @Override
     public void update(int currentIndex, MP3Song currentSong, MP3Song nextInLine) {
@@ -122,7 +137,73 @@ public class PlayerDisplay implements GraphicalPlayerDataObserver {
         else {
             nextInQueue.setText("");
         }
+        this.songInformation.updateSongInformation(currentSong);
+    }
 
+
+    /**
+     * Represents a simple grid which holds information on meta data of {@link MP3Song song} which
+     * is currently played.<br>
+     *
+     * This data includes:
+     * <ul>
+     *     <li>Name of an artist</li>
+     *     <li>Title of a song</li>
+     *     <li>Album of a song</li>
+     *     <li>Genre of a song</li>
+     *     <li>Year of release / year encoded in meta data</li>
+     * </ul>
+     *
+     *
+     */
+    private class SongInformation extends GridPane {
+
+        private Label titleLabel;
+
+        private Label artistLabel;
+
+        private Label yearLabel;
+
+        private Label albumLabel;
+
+        private Label genreLabel;
+
+        SongInformation() {
+            super();
+            getStyleClass().add("rootPane");
+            setHgap(10);
+            setVgap(10);
+            titleLabel = new Label();
+            artistLabel = new Label();
+            yearLabel = new Label();
+            albumLabel = new Label();
+            genreLabel = new Label();
+            titleLabel.getStyleClass().add("infoLabel");
+            artistLabel.getStyleClass().add("infoLabel");
+            yearLabel.getStyleClass().add("infoLabel");
+            albumLabel.getStyleClass().add("infoLabel");
+            genreLabel.getStyleClass().add("infoLabel");
+            add(artistLabel, 0, 0);
+            add(titleLabel,0,1);
+            add(albumLabel,0,2);
+            add(genreLabel,1,0);
+            add(yearLabel,1,1);
+        }
+
+        /**
+         * Updates appropriate labels which display meta data of {@code song}
+         *
+         * @param song whose meta data is displayed
+         */
+        void updateSongInformation(MP3Song song) {
+            if(song != null) {
+                titleLabel.setText("Title: " + (song.getTitle() == null ? "" : song.getTitle()));
+                artistLabel.setText("Artist: " + (song.getArtist() == null ? "" : song.getArtist()));
+                yearLabel.setText("Year: " + (song.getYear() == null ? "" : song.getYear()));
+                albumLabel.setText("Album: " + (song.getAlbum() == null ? "" : song.getAlbum()));
+                genreLabel.setText("Genre: " + (song.getGenre() == null ? "" : song.getGenre()));
+            }
+        }
     }
 
 
