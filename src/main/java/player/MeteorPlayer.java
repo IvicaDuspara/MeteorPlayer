@@ -38,11 +38,17 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
 
     private GridPane gridLayout;
 
+    private Scene scene;
+
     private PlayerData playerData;
 
     private PlayerDisplay playerDisplay;
 
     private Command openCommand;
+
+    private Command lightSkinCommand;
+
+    private Command darkSkinCommand;
 
     private Command startServerCommand;
 
@@ -63,7 +69,7 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
         rootLayout.getStyleClass().add("rootPane");
         gridLayout = new GridPane();
         rootLayout.setCenter(gridLayout);
-        Scene scene = new Scene(rootLayout,800,800);
+        scene = new Scene(rootLayout,800,800);
         scene.getStylesheets().add(STYLE_SHEET_MATRIX);
         playerData = new PlayerData();
         playerDisplay = new PlayerDisplay(playerData);
@@ -131,6 +137,7 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
         networkMenu = new Menu("_Network");
         initFileMenu();
        // initNetworkMenu();
+        initSkinMenu();
         menuBar.getMenus().add(fileMenu);
         menuBar.getMenus().add(networkMenu);
         rootLayout.setTop(menuBar);
@@ -151,6 +158,9 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
     }
 
 
+    private void initSkinMenu() {
+
+    }
     /**
      * Closes MeteorPlayer.<br>
      * Also shuts down any active pool threads.
