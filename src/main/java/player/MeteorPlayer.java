@@ -15,8 +15,9 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import model.PlayerData;
 import commands.Command;
+import observers.PlayerDisplayObserver;
 
-public class MeteorPlayer extends Application {
+public class MeteorPlayer extends Application implements PlayerDisplayObserver {
     private static final String STYLE_SHEET_MATRIX = "matrix.css";
 
     private static final int WIDTH_CONSTRAINT = 960;
@@ -66,6 +67,7 @@ public class MeteorPlayer extends Application {
         scene.getStylesheets().add(STYLE_SHEET_MATRIX);
         playerData = new PlayerData();
         playerDisplay = new PlayerDisplay(playerData);
+        playerDisplay.addPlayerDisplayObserver(this);
         initGUI();
         window.setOnCloseRequest(e -> handleClose());
         window.setScene(scene);
@@ -82,7 +84,8 @@ public class MeteorPlayer extends Application {
         labelHBox.getChildren().addAll(new Label(), playerDisplay.getNowPlaying());
         labelHBox.getStyleClass().add("labelHBox");
         gridLayout.add(labelHBox,0,0);
-        gridLayout.add(playerDisplay.getloadedSongsView(),0 ,2);
+        gridLayout.add(playerDisplay.getSearchBar(),0,1);
+        gridLayout.add(playerDisplay.getLoadedSongsView(),0 ,2);
         gridLayout.add(playerDisplay.getSongInformation(),0,3);
 
 
@@ -155,6 +158,20 @@ public class MeteorPlayer extends Application {
     private void handleClose() {
         playerData.closePlayerData();
     }
+
+
+    @Override
+    public void setQueriedList() {
+        gridLayout.getChildren().remove(playerDisplay.getLoadedSongsView());
+        gridLayout.add(playerDisplay.getQueriedSongsView(),0,2);
+    }
+
+    @Override
+    public void restoreToLoadedList() {
+        gridLayout.getChildren().remove(playerDisplay.getQueriedSongsView());
+        gridLayout.add(playerDisplay.getQueriedSongsView(),0,2);
+    }
+
 
 
     /**

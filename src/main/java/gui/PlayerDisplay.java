@@ -2,10 +2,16 @@ package gui;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import model.PlayerData;
 import observers.GraphicalPlayerDataObserver;
+import observers.PlayerDisplayObserver;
+import observers.SwapObserver;
 import song.MP3Song;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -16,8 +22,9 @@ import song.MP3Song;
  * @author Ivica Duspara
  * @version 1.0
  */
-public class PlayerDisplay implements GraphicalPlayerDataObserver {
-    private static final int LIST_PREFERED_WIDTH = 350;
+public class PlayerDisplay implements GraphicalPlayerDataObserver, SwapObserver {
+
+    private static final int LIST_PREFERRED_WIDTH = 350;
 
     private ListView<MP3Song> loadedSongsView;
 
@@ -31,6 +38,9 @@ public class PlayerDisplay implements GraphicalPlayerDataObserver {
 
     private SongInformation songInformation;
 
+    private TextField searchBar;
+
+    private List<PlayerDisplayObserver> playerDisplayObserverList;
 
     /**
      * Constructs a new {@code PlayerDisplay}.
@@ -50,10 +60,25 @@ public class PlayerDisplay implements GraphicalPlayerDataObserver {
                 playerDataReference.playOnClick(selected);
             }
         });
-        loadedSongsView.setPrefWidth(LIST_PREFERED_WIDTH);
+        loadedSongsView.setPrefWidth(LIST_PREFERRED_WIDTH);
+        this.queriedSongsView.setOnMouseClicked(l -> {
+            if(l.getClickCount() == 2) {
+                MP3Song selected = queriedSongsView.getSelectionModel().getSelectedItem();
+                playerDataReference.playOnClick(selected);
+                searchBar.setText("");
+            }
+        });
+        queriedSongsView.setPrefWidth(LIST_PREFERRED_WIDTH);
         this.nowPlaying.getStyleClass().add("nowPlayingLabel");
         this.nextInQueue.getStyleClass().add("queueLabel");
         this.songInformation = new SongInformation();
+        this.searchBar = new TextField();
+        this.searchBar.setPromptText("Search song...");
+        this.searchBar.getStyleClass().add("searchField");
+        DynamicSearch ds = new DynamicSearch(playerDataReference);
+        this.searchBar.textProperty().addListener(ds);
+        ds.addSwapObserver(this);
+        this.playerDisplayObserverList = new ArrayList<>();
     }
 
 
@@ -82,22 +107,10 @@ public class PlayerDisplay implements GraphicalPlayerDataObserver {
      * Returns view of all loaded songs of backing model.
      *
      * @return
-     *        view of all loaded songs
-     *
+     *         view of all loaded songs of backing model.
      */
-    public ListView<MP3Song> getloadedSongsView() {
+    public ListView<MP3Song> getLoadedSongsView() {
         return loadedSongsView;
-    }
-
-
-    /**
-     * Returns view of all queried songs in search.
-     *
-     * @return
-     *         view of all queried songs in search
-     */
-    public ListView<MP3Song> getQueriedSongsView() {
-        return queriedSongsView;
     }
 
 
@@ -113,6 +126,17 @@ public class PlayerDisplay implements GraphicalPlayerDataObserver {
 
 
     /**
+     * Returns view of all queried songs of backing model.
+     *
+     * @return
+     *         view of all queried songs of backing model.
+     */
+    public ListView<MP3Song> getQueriedSongsView() {
+        return queriedSongsView;
+    }
+
+
+    /**
      * Returns a grid containing meta-data information on currently playing {@link MP3Song}.
      *
      * @return
@@ -120,6 +144,39 @@ public class PlayerDisplay implements GraphicalPlayerDataObserver {
      */
     public SongInformation getSongInformation() {
         return songInformation;
+    }
+
+
+    /**
+     * Returns a search bar used for searching of loaded songs.<br>
+     *
+     * @return
+     *         a search bar used for searching of loaded songs
+     */
+    public TextField getSearchBar() {
+        return searchBar;
+    }
+
+
+    /**
+     * Adds {@code observer} to this {@code PlayerDisplay}
+     *
+     * @param observer
+     *        which is added
+     */
+    public void addPlayerDisplayObserver(PlayerDisplayObserver observer) {
+        playerDisplayObserverList.add(observer);
+    }
+
+
+    /**
+     * Removes {@code observer} from this {@code PlayerDisplay}
+     *
+     * @param observer
+     *        which is removed
+     */
+    public void removePlayerDisplayObserver(PlayerDisplayObserver observer) {
+        playerDisplayObserverList.remove(observer);
     }
 
 
@@ -138,6 +195,20 @@ public class PlayerDisplay implements GraphicalPlayerDataObserver {
             nextInQueue.setText("");
         }
         this.songInformation.updateSongInformation(currentSong);
+    }
+
+    @Override
+    public void swapToQueriedView() {
+        for(PlayerDisplayObserver observer : playerDisplayObserverList) {
+            observer.setQueriedList();
+        }
+    }
+
+    @Override
+    public void restoreToLoadedView() {
+        for(PlayerDisplayObserver observer : playerDisplayObserverList) {
+            observer.restoreToLoadedList();
+        }
     }
 
 
