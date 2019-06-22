@@ -1,5 +1,7 @@
 package player;
 
+import commands.DarkSkinCommand;
+import commands.LightSkinCommand;
 import commands.OpenCommand;
 import gui.PlayerDisplay;
 import javafx.application.Application;
@@ -33,6 +35,8 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
     private Menu fileMenu;
 
     private Menu networkMenu;
+
+    private Menu skinMenu;
 
     private BorderPane rootLayout;
 
@@ -135,11 +139,13 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
         menuBar.getStyleClass().add("menu-bar");
         fileMenu = new Menu("_File");
         networkMenu = new Menu("_Network");
+        skinMenu = new Menu("_Skin");
         initFileMenu();
        // initNetworkMenu();
         initSkinMenu();
         menuBar.getMenus().add(fileMenu);
         menuBar.getMenus().add(networkMenu);
+        menuBar.getMenus().add(skinMenu);
         rootLayout.setTop(menuBar);
     }
 
@@ -159,8 +165,16 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
 
 
     private void initSkinMenu() {
-
+        lightSkinCommand = new LightSkinCommand(window,playerData,"Light skin",scene);
+        darkSkinCommand = new DarkSkinCommand(window,playerData,"Dark skin",scene);
+        skinMenu.getItems().add(darkSkinCommand);
+        skinMenu.getItems().add(lightSkinCommand);
+        skinMenu.getStyleClass().add("menu");
+        lightSkinCommand.getStyleClass().add("menuitem");
+        darkSkinCommand.getStyleClass().add("menuitem");
     }
+
+
     /**
      * Closes MeteorPlayer.<br>
      * Also shuts down any active pool threads.

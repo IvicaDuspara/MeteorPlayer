@@ -1,0 +1,172 @@
+.list-view {
+	-fx-background-color: #FFFFFF;
+}
+
+.list-cell:even {
+	-fx-background-color: #FFFFFF;
+	-fx-text-fill: #000000;
+}
+.list-cell:odd {
+	-fx-background-color: #FFFFFF;
+	-fx-text-fill: #000000;
+}
+
+.list-cell:focused {
+	-fx-background-color: #FFFFFF;
+	-fx-text-fill: #008020;
+	-fx-border-radius: 1.0em;
+	-fx-border-color: #008020;
+}
+
+.scroll-bar {
+	-fx-background-color: #FFFFFF;
+	-fx-color: #000000;
+	-fx-border-radius: 2.0em;
+}
+
+.scroll-bar .thumb {
+	-fx-color: #000000;
+}
+
+.scroll-bar .thumb:pressed {
+	-fx-color: #008020;
+}
+
+.increment-button {
+	-fx-background-color: #FFFFFF;
+}
+
+.increment-arrow,
+.decrement-arrow {
+    -fx-background-color: #000000;
+
+}
+
+.decrement-button {
+	-fx-background-color: #FFFFFF;
+}
+
+.corner {
+	-fx-background-color: black;
+}
+
+.button {
+	-fx-background-color: #FFFFFF;
+	-fx-text-fill: #000000;
+	-fx-border-color: #000000;
+	-fx-border-radius: 1.0em;
+	-fx-border-width: 5px;
+}
+
+.button:pressed {
+	-fx-text-fill: #008020;
+	-fx-border-color: #008020;
+}
+
+.button:hover {
+	-fx-text-fill: #008020;
+	-fx-border-color: #008020;
+}
+
+.hbox {
+	-fx-background-color: #FFFFFF;
+	-fx-spacing: 5;
+	-fx-padding: 10;
+}
+
+.labelHBox {
+	-fx-background-color: #FFFFFF;
+	-fx-padding: 15;
+	-fx-spacing: 250;
+
+}
+.nowPlayingLabel {
+	-fx-background-color: #FFFFFF;
+	-fx-text-fill: #008020;
+	-fx-font-size: 16pt;
+}
+.infoLabel {
+	-fx-background-color: #FFFFFF;
+	-fx-text-fill: #008020;
+}
+
+.queueLabel {
+	-fx-background-color: #FFFFFF;
+	-fx-text-fill: #008020;
+	-fx-font-size: 12pt;
+}
+.searchField {
+	-fx-background-color: #FFFFFF;
+	-fx-text-fill: #008020;
+	-fx-prompt-text-fill: #00660c;
+	-fx-border-color: #008020;
+}
+.slider {
+	-fx-background-color: #FFFFFF;
+}
+
+.slider .track {
+	-fx-background-color: #000000;
+}
+.slider .thumb {
+	-fx-background-color: #000000;
+}
+
+.slider .thumb:hover {
+	-fx-background-color : #008020;
+}
+.slider .thumb:pressed {
+	-fx-background-color: #008020;
+}
+
+.menu-bar {
+	-fx-background-color: #FFFFFF;
+}
+
+.menu {
+	-fx-border-color: #000000;
+	-fx-border-width: 2px;
+	-fx-border-radius: 5px;
+}
+
+.menu:hover {
+	-fx-background-color: #FFFFFF;
+	-fx-border-color: #008020;
+}
+
+.menu:showing {
+	-fx-background-color: #FFFFFF;
+	-fx-border-color: #008020;
+}
+
+.menu:showing .label {
+	-fx-text-fill: #008020;
+}
+
+.menu .label {
+	-fx-text-fill: #000000;
+}
+
+.menu .label:hover {
+	-fx-text-fill: #008020;
+}
+
+.
+.menuitem {
+	-fx-background-color: #FFFFFF;
+	-fx-border-color: #000000;
+}
+.menuitem:focused {
+	-fx-background-color: #FFFFFF;
+	-fx-border-color: #008020;
+	-fx-border-radius: 5px;
+}
+
+
+.context-menu {
+    -fx-background-color: #FFFFFF;
+}
+
+.rootPane {
+	-fx-background-color: #FFFFFF;
+}
