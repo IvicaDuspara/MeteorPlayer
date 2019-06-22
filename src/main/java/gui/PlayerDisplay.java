@@ -1,5 +1,6 @@
 package gui;
 
+import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -41,31 +42,35 @@ public class PlayerDisplay implements GraphicalPlayerDataObserver, SwapObserver 
     private TextField searchBar;
 
     private List<PlayerDisplayObserver> playerDisplayObserverList;
+    
+    private PlayerData playerData;
 
     /**
      * Constructs a new {@code PlayerDisplay}.
      *
-     * @param playerDataReference whose data is used as a model for views in this {@code PlayerDisplay}
+     * @param playerData whose data is used as a model for views in this {@code PlayerDisplay}
      */
-    public PlayerDisplay(PlayerData playerDataReference) {
-        playerDataReference.addGraphicalPlayerDataObserver(this);
-        this.loadedSongsView = new ListView<>(playerDataReference.getLoadedSongs());
-        this.queuedSongsView = new ListView<>(playerDataReference.getQueuedSongs());
-        this.queriedSongsView = new ListView<>(playerDataReference.getQueriedSongs());
+    public PlayerDisplay(PlayerData playerData) {
+        this.playerData = playerData;
+        this.playerData.addGraphicalPlayerDataObserver(this);
+        this.loadedSongsView = new ListView<>(playerData.getLoadedSongs());
+        this.queuedSongsView = new ListView<>(playerData.getQueuedSongs());
+        this.queriedSongsView = new ListView<>(playerData.getQueriedSongs());
         this.nowPlaying = new Label("");
         this.nextInQueue = new Label("");
         this.loadedSongsView.setOnMouseClicked(l -> {
             if(l.getClickCount() == 2) {
                 MP3Song selected = loadedSongsView.getSelectionModel().getSelectedItem();
-                playerDataReference.playOnClick(selected);
+                playerData.playOnClick(selected);
             }
         });
         loadedSongsView.setPrefWidth(LIST_PREFERRED_WIDTH);
         this.queriedSongsView.setOnMouseClicked(l -> {
             if(l.getClickCount() == 2) {
                 MP3Song selected = queriedSongsView.getSelectionModel().getSelectedItem();
-                playerDataReference.playOnClick(selected);
+                playerData.playOnClick(selected);
                 searchBar.setText("");
+                restoreToLoadedView();
             }
         });
         queriedSongsView.setPrefWidth(LIST_PREFERRED_WIDTH);
@@ -75,7 +80,7 @@ public class PlayerDisplay implements GraphicalPlayerDataObserver, SwapObserver 
         this.searchBar = new TextField();
         this.searchBar.setPromptText("Search song...");
         this.searchBar.getStyleClass().add("searchField");
-        DynamicSearch ds = new DynamicSearch(playerDataReference);
+        DynamicSearch ds = new DynamicSearch(playerData);
         this.searchBar.textProperty().addListener(ds);
         ds.addSwapObserver(this);
         this.playerDisplayObserverList = new ArrayList<>();
@@ -209,6 +214,12 @@ public class PlayerDisplay implements GraphicalPlayerDataObserver, SwapObserver 
         for(PlayerDisplayObserver observer : playerDisplayObserverList) {
             observer.restoreToLoadedList();
         }
+    }
+
+    @Override
+    public void updateQueriedView(ObservableList<MP3Song> filteredStuff) {
+        playerData.setQueriedSongs(filteredStuff);
+        queriedSongsView.setItems(filteredStuff);
     }
 
 

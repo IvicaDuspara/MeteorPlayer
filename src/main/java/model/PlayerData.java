@@ -140,6 +140,17 @@ public class PlayerData {
 
 
     /**
+     * Sets {@code queriedSongs} to {@code songs}
+     *
+     * @param songs
+     *        which are used as new {@code queriedSongs}
+     */
+    public void setQueriedSongs(ObservableList<MP3Song> songs) {
+        this.queriedSongs = songs;
+    }
+
+
+    /**
      * Adds {@code networkPlayerDataObserver} to this {@code PlayerData}
      *
      * @param networkPlayerDataObserver
@@ -386,7 +397,6 @@ public class PlayerData {
             PopulateSongsListJob populationJob = new PopulateSongsListJob(files);
             try {
                 pool.submit(populationJob).get();
-                System.out.println("Got back from population job");
                 notifyGraphicalPlayerDataObservers();
             } catch (InterruptedException | ExecutionException ex) {
                 Platform.runLater(() -> {

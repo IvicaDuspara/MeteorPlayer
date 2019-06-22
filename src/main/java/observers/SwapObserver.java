@@ -1,5 +1,8 @@
 package observers;
 
+import javafx.collections.ObservableList;
+import song.MP3Song;
+
 /**
  * This interface represents observers which are interested in changes in {@link gui.DynamicSearch DynamicSearch}
  *
@@ -17,4 +20,9 @@ public interface SwapObserver {
      * Restores currently viewed list to loaded songs.
      */
     void restoreToLoadedView();
+
+    /**
+    * Swaps queried list with {@code filteredStuff}
+    */
+    void updateQueriedView(ObservableList<MP3Song> filteredStuff);
 }

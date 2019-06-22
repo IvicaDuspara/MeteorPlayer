@@ -168,8 +168,12 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
 
     @Override
     public void restoreToLoadedList() {
-        gridLayout.getChildren().remove(playerDisplay.getQueriedSongsView());
-        gridLayout.add(playerDisplay.getQueriedSongsView(),0,2);
+        if(gridLayout.getChildren().contains(playerDisplay.getQueriedSongsView())) {
+            gridLayout.getChildren().remove(playerDisplay.getQueriedSongsView());
+        }
+        if(!gridLayout.getChildren().contains(playerDisplay.getLoadedSongsView())) {
+            gridLayout.add(playerDisplay.getLoadedSongsView(), 0, 2);
+        }
     }
 
 

@@ -98,6 +98,7 @@
 .searchField {
 	-fx-background-color: #0D0208;
 	-fx-text-fill: #00FF41;
+	-fx-prompt-text-fill: #00660c;
 	-fx-border-color: #00FF41;
 }
 .slider {

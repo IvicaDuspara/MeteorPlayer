@@ -168,7 +168,6 @@ public class MP3Song implements Comparable<MP3Song>{
      *
      */
     public void extractMetaData() {
-        System.out.println("Do I get called?");
         if(!metaDataSet) {
             for(Map.Entry<String, Object> entry : mediaFile.getMetadata().entrySet()) {
                 if(entry.getKey().equals("year")) {

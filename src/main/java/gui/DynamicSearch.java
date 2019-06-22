@@ -83,6 +83,16 @@ import java.util.regex.Pattern;
     }
 
 
+    /**
+     * Notifies on extra letter inputs.
+     */
+    private void queryNotify(ObservableList<MP3Song> filteredStuff) {
+        for(SwapObserver observer : swapObserverList) {
+            observer.updateQueriedView(filteredStuff);
+        }
+    }
+
+
     @Override
     public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
         //first letter is typed.
@@ -103,13 +113,16 @@ import java.util.regex.Pattern;
         }
         else {
             ObservableList<MP3Song> filteredStuff = FXCollections.observableArrayList();
+            searchPattern = Pattern.compile(newValue.toLowerCase());
             for(MP3Song song: queriedSongs) {
-                String name = song.getFileName();
-                if(name.matches(newValue.toLowerCase())){
+                String name = song.getFileName().toLowerCase();
+                matcher = searchPattern.matcher(name);
+                if(matcher.find()) {
                     filteredStuff.add(song);
                 }
             }
             queriedSongs = filteredStuff;
+            queryNotify(filteredStuff);
         }
     }
 }
