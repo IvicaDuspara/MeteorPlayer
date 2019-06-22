@@ -4,7 +4,7 @@ import javafx.stage.Stage;
 import model.PlayerData;
 
 /**
- * 
+ * Comments
  */
 public class DarkSkinCommand extends Command {
 
