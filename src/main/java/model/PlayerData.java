@@ -2,6 +2,8 @@ package model;
 
 import broadcaster.ListBroadcaster;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.media.Media;
@@ -32,11 +34,11 @@ import java.util.concurrent.Executors;
  */
 public class PlayerData {
 
-    private List<MP3Song> loadedSongs;
+    private ObservableList<MP3Song> loadedSongs;
 
-    private List<MP3Song> queuedSongs;
+    private ObservableList<MP3Song> queuedSongs;
 
-    private List<MP3Song> queriedSongs;
+    private ObservableList<MP3Song> queriedSongs;
 
     private List<NetworkPlayerDataObserver> networkPlayerDataObserversList;
 
@@ -71,9 +73,12 @@ public class PlayerData {
      * Constructs a new {@code PlayerData}
      */
     public PlayerData() {
-        this.loadedSongs = new ArrayList<>();
-        this.queuedSongs = new ArrayList<>();
-        this.queuedSongs = new ArrayList<>();
+//        this.loadedSongs = new ArrayList<>();
+//        this.queuedSongs = new ArrayList<>();
+//        this.queriedSongs = new ArrayList<>();
+        this.loadedSongs = FXCollections.observableArrayList();
+        this.queuedSongs = FXCollections.observableArrayList();
+        this.queriedSongs = FXCollections.observableArrayList();
         this.networkPlayerDataObserversList = new ArrayList<>();
         this.graphicalPlayerDataObserversList = new ArrayList<>();
         this.keys = new HashSet<>();
@@ -101,7 +106,7 @@ public class PlayerData {
      *
      * @return loaded songs of this {@code PlayerData}
      */
-    public List<MP3Song> getLoadedSongs() {
+    public ObservableList<MP3Song> getLoadedSongs() {
         return loadedSongs;
     }
 
@@ -111,7 +116,7 @@ public class PlayerData {
      *
      * @return queued songs of this {@code PlayerData}
      */
-    public List<MP3Song> getQueuedSongs() {
+    public ObservableList<MP3Song> getQueuedSongs() {
         return queuedSongs;
     }
 
@@ -121,7 +126,7 @@ public class PlayerData {
      *
      * @return queried songs of this {@code PlayerData}
      */
-    public List<MP3Song> getQueriedSongs() {
+    public ObservableList<MP3Song> getQueriedSongs() {
         return queriedSongs;
     }
 
@@ -369,6 +374,7 @@ public class PlayerData {
             PopulateSongsListJob populationJob = new PopulateSongsListJob(files);
             try {
                 pool.submit(populationJob).get();
+                System.out.println("Got back from population job");
                 notifyGraphicalPlayerDataObservers();
             } catch (InterruptedException | ExecutionException ex) {
                 Platform.runLater(() -> {

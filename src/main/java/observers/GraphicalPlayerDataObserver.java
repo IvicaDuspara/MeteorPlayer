@@ -3,8 +3,8 @@ package observers;
 import song.MP3Song;
 
 /**
- * This interface represents observers which handle GUI changes in an application {@link player.MeteorPlayer MeteorPlayer}.<br>
- * More precisely once a change happens in {@link model.PlayerData PlayerData} these observers handle GUI.
+ * This interface represents observers which handle PlayerDisplay changes in an application {@link player.MeteorPlayer MeteorPlayer}.<br>
+ * More precisely once a change happens in {@link model.PlayerData PlayerData} these observers handle PlayerDisplay.
  *
  * @author Ivica Duspara
  * @version 1.0
@@ -12,7 +12,7 @@ import song.MP3Song;
 public interface GraphicalPlayerDataObserver {
 
     /**
-     * Updates GUI with given parameters.
+     * Updates PlayerDisplay with given parameters.
      *
      * @param currentIndex
      *        index of song currently playing

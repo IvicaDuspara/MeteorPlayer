@@ -169,11 +169,11 @@ public class MP3Song implements Comparable<MP3Song>{
     public void extractMetaData() {
         if(!metaDataSet) {
             ObservableMap<String, Object> metaData  = mediaFile.getMetadata();
-            this.title = metaData.get("title").toString();
-            this.album = metaData.get("album").toString();
-            this.artist = metaData.get("artist").toString();
-            this.genre = metaData.get("genre").toString();
-            this.year = metaData.get("year").toString();
+            this.title = metaData.get("title") != null ? metaData.get("title").toString() : " ";
+            this.album = metaData.get("album") != null ? metaData.get("album").toString() : " ";
+            this.artist = metaData.get("artist") != null ? metaData.get("artist").toString() : " ";
+            this.genre = metaData.get("genre") != null ? metaData.get("genre").toString() : " ";
+            this.year = metaData.get("year") != null ? metaData.get("year").toString() : " ";
             metaDataSet = true;
         }
     }
@@ -184,6 +184,9 @@ public class MP3Song implements Comparable<MP3Song>{
 
     @Override
     public boolean equals(Object obj) {
+        if(obj == null){
+            return false;
+        }
         if(obj.getClass() == MP3Song.class) {
             MP3Song casted = (MP3Song) obj;
             return casted.fileName.equals(this.fileName);
@@ -193,6 +196,6 @@ public class MP3Song implements Comparable<MP3Song>{
 
     @Override
     public String toString() {
-        return super.toString();
+        return fileName;
     }
 }
