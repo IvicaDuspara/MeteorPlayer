@@ -69,6 +69,7 @@ public class PlayerData {
     private final static String SERVER_MOVE_UP = "SERVER_MOVE_UP";
 
 
+
     /**
      * Constructs a new {@code PlayerData}
      */

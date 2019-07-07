@@ -3,8 +3,8 @@ package observers;
 import song.MP3Song;
 
 /**
- * This interface represents observers which handle PlayerDisplay changes in an application {@link player.MeteorPlayer MeteorPlayer}.<br>
- * More precisely once a change happens in {@link model.PlayerData PlayerData} these observers handle PlayerDisplay.
+ * An observer interface which is interested in changes in model, such as song change or a queue change.<br>
+ * Model which broadcasts this information is {@link model.PlayerData PlayerData}.
  *
  * @author Ivica Duspara
  * @version 1.0

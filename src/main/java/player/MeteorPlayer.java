@@ -6,10 +6,7 @@ import commands.OpenCommand;
 import gui.PlayerDisplay;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -64,6 +61,8 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
 
     private Button nextButton;
 
+    private CheckBox playingRandom;
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -107,6 +106,8 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
         previousButton = new Button("<<");
         playButton = new Button("|>");
         nextButton = new Button(">>");
+        playingRandom = new CheckBox("Random");
+
         previousButton.setPrefSize(BUTTON_PREFERED_WIDTH, BUTTON_PREFERED_WIDTH);
         playButton.setPrefSize(BUTTON_PREFERED_WIDTH, BUTTON_PREFERED_WIDTH);
         nextButton.setPrefSize(BUTTON_PREFERED_WIDTH, BUTTON_PREFERED_WIDTH);
@@ -117,7 +118,7 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
         nextButton.setOnAction(l->playerData.playNextSong());
         HBox hb = new HBox();
         hb.setPrefWidth(BUTTON_BOX_PREFERED_WIDTH);
-        hb.getChildren().addAll(previousButton,playButton,nextButton);
+        hb.getChildren().addAll(previousButton,playButton,nextButton,playingRandom);
         hb.getStyleClass().add("hbox");
         GridPane twoGridder = new GridPane();
         twoGridder.add(hb, 0, 0);
