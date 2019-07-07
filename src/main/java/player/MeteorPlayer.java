@@ -5,6 +5,8 @@ import commands.LightSkinCommand;
 import commands.OpenCommand;
 import gui.PlayerDisplay;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
@@ -107,7 +109,8 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
         playButton = new Button("|>");
         nextButton = new Button(">>");
         playingRandom = new CheckBox("Random");
-
+        playingRandom.setAllowIndeterminate(false);
+        playingRandom.setSelected(false);
         previousButton.setPrefSize(BUTTON_PREFERED_WIDTH, BUTTON_PREFERED_WIDTH);
         playButton.setPrefSize(BUTTON_PREFERED_WIDTH, BUTTON_PREFERED_WIDTH);
         nextButton.setPrefSize(BUTTON_PREFERED_WIDTH, BUTTON_PREFERED_WIDTH);
@@ -116,6 +119,15 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
         previousButton.setOnAction(l->playerData.playPreviousLoaded());
         playButton.setOnAction(l->playerData.togglePlay());
         nextButton.setOnAction(l->playerData.playNextSong());
+        playingRandom.setOnAction(event -> {
+            if(playingRandom.isSelected()) {
+                playerData.setRandomSong(true);
+            }
+            else {
+                playerData.setRandomSong(false);
+            }
+        });
+
         HBox hb = new HBox();
         hb.setPrefWidth(BUTTON_BOX_PREFERED_WIDTH);
         hb.getChildren().addAll(previousButton,playButton,nextButton,playingRandom);

@@ -279,7 +279,7 @@ public class PlayerData {
             currentlyPlayingSong = loadedSongs.get(currentlyPlayingSongIndex);
         }
         else {
-            int randomIndex = 0;
+            int randomIndex = random.nextInt(loadedSongs.size());
             while(randomIndex == currentlyPlayingSongIndex) {
                 randomIndex = random.nextInt(loadedSongs.size());
             }
@@ -360,7 +360,7 @@ public class PlayerData {
             currentlyPlayingSong = loadedSongs.get(currentlyPlayingSongIndex);
         }
         else {
-            int randomIndex = 0;
+            int randomIndex = random.nextInt(loadedSongs.size());
             while(randomIndex == currentlyPlayingSongIndex) {
                 randomIndex = random.nextInt(loadedSongs.size());
             }
@@ -398,6 +398,9 @@ public class PlayerData {
             PopulateSongsListJob populationJob = new PopulateSongsListJob(files);
             try {
                 pool.submit(populationJob).get();
+                if(currentlyPlayingSong == null) {
+                    playNextSong();
+                }
                 notifyGraphicalPlayerDataObservers();
             } catch (InterruptedException | ExecutionException ex) {
                 Platform.runLater(() -> {
