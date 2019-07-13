@@ -15,9 +15,7 @@ import song.MP3Song;
 import java.io.File;
 import java.nio.file.Path;
 import java.util.*;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
 /**
  * This class represents a model for {@link player.MeteorPlayer MeteorPlayer}.<br>
@@ -371,6 +369,7 @@ public class PlayerData {
     }
 
 
+
     /**
      * Plays or pauses a song.
      */
@@ -397,7 +396,8 @@ public class PlayerData {
         if(files != null) {
             PopulateSongsListJob populationJob = new PopulateSongsListJob(files);
             try {
-                pool.submit(populationJob).get();
+                List<MP3Song> listFuture = pool.submit(populationJob).get();
+                loadedSongs.addAll(listFuture);
                 if(currentlyPlayingSong == null) {
                     playNextSong();
                 }
@@ -424,17 +424,23 @@ public class PlayerData {
      *
      * Represents a job which adds songs to {@link #loadedSongs}.<br>
      * Only those files which are already not loaded will be added to {@code PlayerData}
-     * {@code PopulateSongsListJob} will never delete already loaded songs -> it will simply add them.
+     * {@code PopulateSongsListJob} will never delete already loaded songs -> it will simply add them.<br>
+     * Songs which are added in this job will be returned as a list.
      *
      * @author Ivica Duspara
      * @version 1.0
      */
-    private class PopulateSongsListJob implements Runnable {
+    private class PopulateSongsListJob implements Callable<List<MP3Song>> {
 
         /**
          * Reference to listed files which will be loaded to {@code PlayerData}
          */
         private List<File> files;
+
+        /**
+         *
+         */
+        private List<MP3Song> population;
 
 
         /**
@@ -443,19 +449,21 @@ public class PlayerData {
          * @param files
          *        which will be converted into {@link MP3Song files}
          */
-        public PopulateSongsListJob(List<File> files) {
+        PopulateSongsListJob(List<File> files) {
             this.files = files;
+            this.population = new ArrayList<>();
         }
 
         @Override
-        public void run() {
+        public List<MP3Song> call() {
             for(File file : files) {
                 Path path = file.toPath();
                 if(!keys.contains(path)) {
                     keys.add(path);
-                    loadedSongs.add(new MP3Song(new Media(file.toURI().toString()), file.getName()));
+                    population.add(new MP3Song(new Media(file.toURI().toString()), file.getName()));
                 }
             }
+            return population;
         }
     }
 }

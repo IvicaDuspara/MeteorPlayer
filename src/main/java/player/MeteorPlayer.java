@@ -5,8 +5,6 @@ import commands.LightSkinCommand;
 import commands.OpenCommand;
 import gui.PlayerDisplay;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
@@ -57,6 +55,11 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
 
     private Command stopServerCommand;
 
+    private Command playSinanCommand;
+
+    private Command playBlackEyedPeasCommand;
+
+
     private Button previousButton;
 
     private Button playButton;
@@ -67,7 +70,7 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
 
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         window = primaryStage;
         window.setTitle("Meteor");
         rootLayout = new BorderPane();
