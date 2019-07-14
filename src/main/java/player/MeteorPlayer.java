@@ -1,8 +1,6 @@
 package player;
 
-import commands.DarkSkinCommand;
-import commands.LightSkinCommand;
-import commands.OpenCommand;
+import commands.*;
 import gui.PlayerDisplay;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -13,7 +11,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import model.PlayerData;
-import commands.Command;
 import observers.PlayerDisplayObserver;
 
 public class MeteorPlayer extends Application implements PlayerDisplayObserver {
@@ -45,19 +42,19 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
 
     private PlayerDisplay playerDisplay;
 
-    private Command openCommand;
+    private ModelCommand openCommand;
 
-    private Command lightSkinCommand;
+    private SceneCommand lightSkinCommand;
 
-    private Command darkSkinCommand;
+    private SceneCommand darkSkinCommand;
 
-    private Command startServerCommand;
+    private SceneCommand startServerCommand;
 
-    private Command stopServerCommand;
+    private ModelCommand stopServerCommand;
 
-    private Command playSinanCommand;
+    private ModelCommand playSinanCommand;
 
-    private Command playBlackEyedPeasCommand;
+    private ModelCommand playBlackEyedPeasCommand;
 
 
     private Button previousButton;
@@ -167,7 +164,7 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
 
 
     /**
-     * Initializes {@link #fileMenu {@code fileMenu}} with {@link Command Commands}.
+     * Initializes {@link #fileMenu {@code fileMenu}} with {@link ModelCommand ModelCommands}.
      *
      * This method will assign appropriate {@code Commands} to {@code fileMenu}
      * set style class of {@code fileMenu} and styles of added {@code Commands}.
@@ -181,8 +178,8 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
 
 
     private void initSkinMenu() {
-        lightSkinCommand = new LightSkinCommand(window,playerData,"Light skin",scene);
-        darkSkinCommand = new DarkSkinCommand(window,playerData,"Dark skin",scene);
+        lightSkinCommand = new LightSkinCommand(scene,"Light skin");
+        darkSkinCommand = new DarkSkinCommand(scene,"Dark skin");
         skinMenu.getItems().add(darkSkinCommand);
         skinMenu.getItems().add(lightSkinCommand);
         skinMenu.getStyleClass().add("menu");

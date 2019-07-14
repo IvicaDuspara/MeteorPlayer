@@ -20,28 +20,28 @@ import java.util.List;
  * @version 1.0
  *
  */
-public class OpenCommand extends Command{
+public class OpenCommand extends ModelCommand{
 
     /**
      * Used for choosing files.
      */
     private FileChooser fileChooser;
 
+    private Stage stage;
 
     /**
      * Constructs a newly allocated {@code OpenCommand} with given parameters
      *
-     * @param stage
-     * 		  {@code Stage} to which this {@code OpenCommand} is assigned
      *
      * @param playerData
      * 		  {@code PlayerData} in which selected files are stored
      *
-     * @param commandName
-     * 		  Name of this {@code OpenCommand}
+     * @param name
+     * 		  of this {@code OpenCommand}
      */
-    public OpenCommand(Stage stage, PlayerData playerData, String commandName) {
-        super(stage,playerData,commandName);
+    public OpenCommand(Stage stage, PlayerData playerData, String name) {
+        super(playerData,name);
+        this.stage = stage;
         this.fileChooser = new FileChooser();
         setAccelerator(new KeyCodeCombination(KeyCode.O, KeyCombination.CONTROL_DOWN));
 
@@ -49,7 +49,7 @@ public class OpenCommand extends Command{
 
 
     @Override
-    public void executeCommand() {
+    public void execute() {
         List<File> files = fileChooser.showOpenMultipleDialog(stage);
         playerData.addSongs(files);
 
