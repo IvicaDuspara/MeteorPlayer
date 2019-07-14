@@ -121,6 +121,21 @@ import java.util.regex.Pattern;
                     filteredStuff.add(song);
                 }
             }
+            /*
+            * If an newValue is something misspelled queried songs are empty.
+            * Then if an user deletes a character/characters to correct themselves, newValue would search in an empty list because
+            * of spelling mistake that first occurred. The following code will check if filteredStuff is empty, and if it is it will look
+            * for songs matching newValue in loadedSongs. This is a form of lazy error recovery
+            * */
+            if(filteredStuff.isEmpty()) {
+                for(MP3Song song : loadedSongs) {
+                    String name = song.getFileName().toLowerCase();
+                    matcher = searchPattern.matcher(name);
+                    if(matcher.find()) {
+                        filteredStuff.add(song);
+                    }
+                }
+            }
             queriedSongs = filteredStuff;
             queryNotify(filteredStuff);
         }

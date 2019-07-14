@@ -176,7 +176,7 @@ public class PlayerData {
      */
     private void notifyNetworkPlayerDataObservers(String code) {
         for(NetworkPlayerDataObserver networkPlayerDataObserver : networkPlayerDataObserversList) {
-            networkPlayerDataObserver.update(code);
+            networkPlayerDataObserver.update(code,this);
         }
     }
 

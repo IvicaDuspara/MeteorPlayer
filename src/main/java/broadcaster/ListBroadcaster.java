@@ -1,6 +1,7 @@
 package broadcaster;
 
 import codes.ICommunicationCode;
+import model.PlayerData;
 import observers.NetworkPlayerDataObserver;
 
 import java.io.BufferedReader;
@@ -127,7 +128,7 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
 
 
     @Override
-    public void update(String code) {
+    public void update(String code, PlayerData playerData) {
 
     }
 }
