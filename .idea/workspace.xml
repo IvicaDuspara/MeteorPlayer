@@ -7,29 +7,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1008d3e-10db-4d65-8be4-b1a277ca8749" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/MeteorPlayer_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Codes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/codes.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/codes/concretecodes/ServerMoveUpCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/codes/concretecodes/ServerNowPlayingCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/codes/concretecodes/ServerQueueListCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/codes/concretecodes/ServerSongListCode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/broadcaster/ListBroadcaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/broadcaster/ListBroadcaster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codes/ICommunicationCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codes/ICommunicationCode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/PlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/PlayerData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/broadcaster/ListBroadcaster.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/codes/ICommunicationCode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commands/Command.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commands/DarkSkinCommand.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commands/LightSkinCommand.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/commands/OpenCommand.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gui/DynamicSearch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gui/PlayerDisplay$SongInformation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/gui/PlayerDisplay.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/light.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/matrix.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/PlayerData$PopulateSongsListJob.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/PlayerData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/observers/GraphicalPlayerDataObserver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/observers/NetworkPlayerDataObserver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/observers/PlayerDisplayObserver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/observers/SwapObserver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/player/MeteorPlayer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/song/MP3Song.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -55,15 +42,16 @@
         <counts>
           <entry key="codes" value="1" />
           <entry key="css" value="6" />
-          <entry key="java" value="61" />
+          <entry key="java" value="73" />
+          <entry key="txt" value="1" />
           <entry key="xml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="6" />
-          <entry key="JAVA" value="61" />
-          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="JAVA" value="73" />
+          <entry key="PLAIN_TEXT" value="2" />
           <entry key="XML" value="2" />
         </counts>
       </usages-collector>
@@ -72,16 +60,16 @@
           <entry key="codes" value="303" />
           <entry key="css" value="248" />
           <entry key="dummy" value="27" />
-          <entry key="java" value="27596" />
-          <entry key="txt" value="2099" />
+          <entry key="java" value="28201" />
+          <entry key="txt" value="2348" />
           <entry key="xml" value="22" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="248" />
-          <entry key="JAVA" value="27596" />
-          <entry key="PLAIN_TEXT" value="2429" />
+          <entry key="JAVA" value="28201" />
+          <entry key="PLAIN_TEXT" value="2678" />
           <entry key="XML" value="22" />
         </counts>
       </usages-collector>
@@ -92,20 +80,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/broadcaster/ListBroadcaster.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="730">
-              <caret line="130" column="57" selection-start-line="130" selection-start-column="57" selection-end-line="130" selection-end-column="57" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gui/DynamicSearch.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1697">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
+            <state relative-caret-position="355">
+              <caret line="108" column="42" selection-start-line="108" selection-start-column="42" selection-end-line="108" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -116,32 +92,47 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/PlayerData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="396" column="71" selection-start-line="396" selection-start-column="71" selection-end-line="396" selection-end-column="71" />
+            <state relative-caret-position="135">
+              <caret line="399" column="50" lean-forward="true" selection-start-line="399" selection-start-column="50" selection-end-line="399" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/model/Codes.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gui/PlayerDisplay.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/observers/NetworkPlayerDataObserver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-107">
-              <caret line="182" column="16" selection-start-line="182" selection-start-column="16" selection-end-line="182" selection-end-column="16" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="285">
+              <caret line="19" column="59" selection-start-line="19" selection-start-column="59" selection-end-line="19" selection-end-column="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/codes/concretecodes/ServerQueueListCode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/codes/concretecodes/ServerMoveUpCode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/codes/concretecodes/ServerNowPlayingCode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -186,7 +177,6 @@
         <option value="$PROJECT_DIR$/src/main/java/song/Song.java" />
         <option value="$PROJECT_DIR$/src/main/java/codes/ICommunicationCOde.java" />
         <option value="$PROJECT_DIR$/src/main/java/song/MainMain.java" />
-        <option value="$PROJECT_DIR$/src/main/java/codes/ICommunicationCode.java" />
         <option value="$PROJECT_DIR$/src/main/java/player/MeteorPlayeer.java" />
         <option value="$PROJECT_DIR$/src/main/java/observers/PlayerDataObserver.java" />
         <option value="$PROJECT_DIR$/codes" />
@@ -205,11 +195,18 @@
         <option value="$PROJECT_DIR$/src/main/resources/light.css" />
         <option value="$PROJECT_DIR$/src/main/java/player/MeteorPlayer.java" />
         <option value="$PROJECT_DIR$/src/main/java/observers/NetworkPlayerDataObserver.java" />
-        <option value="$PROJECT_DIR$/src/main/java/broadcaster/ListBroadcaster.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/gui/DynamicSearch.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/PlayerData.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Codes.java" />
+        <option value="$PROJECT_DIR$/src/main/java/broadcaster/ListBroadcaster.java" />
+        <option value="$PROJECT_DIR$/src/main/java/codes/concretecodes/ServerSongList.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/PlayerData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/codes.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/codes/ICommunicationCode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/codes/concretecodes/ServerMoveUpCode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/codes/concretecodes/ServerSongListCode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/codes/concretecodes/ServerQueueListCode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/codes/concretecodes/ServerNowPlayingCode.java" />
       </list>
     </option>
   </component>
@@ -264,6 +261,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="codes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MeteorPlayer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MeteorPlayer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="codes" type="462c0819:PsiDirectoryNode" />
+              <item name="concretecodes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MeteorPlayer" type="b2602c69:ProjectViewProjectNode" />
@@ -460,7 +466,14 @@
       <option name="project" value="LOCAL" />
       <updated>1563099404302</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Added Codes class in package model.&#10;These codes describe change which occurred to network broadcaster.">
+      <created>1563100508207</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1563100508207</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -511,7 +524,8 @@
     <MESSAGE value="Tested feature for playing random songs.&#10;It didn't work correctly, and it does now.&#10;Tested changing between random and non random mode mid playing. Works as intended." />
     <MESSAGE value="Changed the return value of a job which opens songs.&#10;Previously it returned void, now it returns list of all loaded songs. &#10;This will be used for broadcasting of names of songs which were loaded." />
     <MESSAGE value="Adjusted error recovery in search bar." />
-    <option name="LAST_COMMIT_MESSAGE" value="Adjusted error recovery in search bar." />
+    <MESSAGE value="Added Codes class in package model.&#10;These codes describe change which occurred to network broadcaster." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Codes class in package model.&#10;These codes describe change which occurred to network broadcaster." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/song/MainMain.java" />
@@ -519,16 +533,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/codes/ICommunicationCode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -601,13 +605,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/commands/PlayBlackEyedPeasCommand.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/commands/PlaySinanCommand.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/observers/NetworkPlayerDataObserver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="59" selection-start-line="19" selection-start-column="59" selection-end-line="19" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/player/MeteorPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="915">
@@ -625,30 +622,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/broadcaster/ListBroadcaster.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="730">
-          <caret line="130" column="57" selection-start-line="130" selection-start-column="57" selection-end-line="130" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/observers/SwapObserver.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="26" column="9" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gui/PlayerDisplay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-107">
-          <caret line="182" column="16" selection-start-line="182" selection-start-column="16" selection-end-line="182" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -662,20 +639,89 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/PlayerData.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Codes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="396" column="71" selection-start-line="396" selection-start-column="71" selection-end-line="396" selection-end-column="71" />
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/PlayerDisplay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-107">
+          <caret line="182" column="16" selection-start-line="182" selection-start-column="16" selection-end-line="182" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Codes.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/PlayerData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="135">
+          <caret line="399" column="50" lean-forward="true" selection-start-line="399" selection-start-column="50" selection-end-line="399" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/codes.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/broadcaster/ListBroadcaster.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="108" column="42" selection-start-line="108" selection-start-column="42" selection-end-line="108" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/codes/ICommunicationCode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/codes/concretecodes/ServerSongListCode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/observers/NetworkPlayerDataObserver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="59" selection-start-line="19" selection-start-column="59" selection-end-line="19" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/codes/concretecodes/ServerQueueListCode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/codes/concretecodes/ServerMoveUpCode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/codes/concretecodes/ServerNowPlayingCode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
         </state>
       </provider>
     </entry>

@@ -38,6 +38,8 @@ public class PlayerData {
 
     private ObservableList<MP3Song> queriedSongs;
 
+    private List<MP3Song> mostRecentUpdate;
+
     private List<NetworkPlayerDataObserver> networkPlayerDataObserversList;
 
     private List<GraphicalPlayerDataObserver> graphicalPlayerDataObserversList;
@@ -392,8 +394,8 @@ public class PlayerData {
         if(files != null) {
             PopulateSongsListJob populationJob = new PopulateSongsListJob(files);
             try {
-                List<MP3Song> listFuture = pool.submit(populationJob).get();
-                loadedSongs.addAll(listFuture);
+                mostRecentUpdate = pool.submit(populationJob).get();
+                loadedSongs.addAll(mostRecentUpdate);
                 notifyNetworkPlayerDataObservers(Codes.SERVER_SONG_LIST);
                 if(currentlyPlayingSong == null) {
                     playNextSong();

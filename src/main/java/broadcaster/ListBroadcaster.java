@@ -100,13 +100,13 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
         communicationCodes = new HashMap<>();
         BufferedReader br;
         try {
-            br = Files.newBufferedReader(Paths.get("codes"));
+            br = Files.newBufferedReader(Paths.get("codes.txt"));
             List<String> codes = new ArrayList<>();
             String line ="";
             while((line = br.readLine()) != null) {
                 codes.add(line);
             }
-            String packagePrefix = "concretecodes.";
+            String packagePrefix = "codes.concretecodes.";
             for(String code : codes) {
                 Class<ICommunicationCode> iCommunicationCodeClass = (Class<ICommunicationCode>) Class.forName(packagePrefix + code);
                 ICommunicationCode iConcrete = iCommunicationCodeClass.getDeclaredConstructor().newInstance();
