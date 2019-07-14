@@ -62,10 +62,6 @@ public class PlayerData {
 
     private Set<Path> keys;
 
-    private final static String SERVER_NOW_PLAYING = "SERVER_NOW_PLAYING";
-
-    private final static String SERVER_MOVE_UP = "SERVER_MOVE_UP";
-
 
 
     /**
@@ -293,7 +289,7 @@ public class PlayerData {
      */
     private void playNextQueued() {
         MP3Song top = dequeueSong();
-        notifyNetworkPlayerDataObservers(SERVER_MOVE_UP);
+        notifyNetworkPlayerDataObservers(Codes.SERVER_MOVE_UP);
         if(queuedSongs.isEmpty()) {
             nextInQueueSong = null;
         }
@@ -317,7 +313,7 @@ public class PlayerData {
     private void playSong(MP3Song song) {
         prepareMediaPlayer(song);
         mediaPlayer.play();
-        notifyNetworkPlayerDataObservers(SERVER_NOW_PLAYING);
+        notifyNetworkPlayerDataObservers(Codes.SERVER_NOW_PLAYING);
         song.extractMetaData();
         notifyGraphicalPlayerDataObservers();
     }
@@ -398,6 +394,7 @@ public class PlayerData {
             try {
                 List<MP3Song> listFuture = pool.submit(populationJob).get();
                 loadedSongs.addAll(listFuture);
+                notifyNetworkPlayerDataObservers(Codes.SERVER_SONG_LIST);
                 if(currentlyPlayingSong == null) {
                     playNextSong();
                 }

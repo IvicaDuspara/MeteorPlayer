@@ -8,17 +8,28 @@
   <component name="ChangeListManager">
     <list default="true" id="c1008d3e-10db-4d65-8be4-b1a277ca8749" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/artifacts/MeteorPlayer_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Codes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/broadcaster/ListBroadcaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/broadcaster/ListBroadcaster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/DynamicSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/DynamicSearch.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/PlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/PlayerData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/observers/NetworkPlayerDataObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/observers/NetworkPlayerDataObserver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/broadcaster/ListBroadcaster.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/broadcaster/ListBroadcaster.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/PlayerData$PopulateSongsListJob.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/PlayerData$PopulateSongsListJob.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/PlayerData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/PlayerData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/observers/NetworkPlayerDataObserver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/observers/NetworkPlayerDataObserver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/player/MeteorPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/player/MeteorPlayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/broadcaster/ListBroadcaster.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/codes/ICommunicationCode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/commands/Command.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/commands/DarkSkinCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/commands/LightSkinCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/commands/OpenCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/gui/DynamicSearch.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/gui/PlayerDisplay$SongInformation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/gui/PlayerDisplay.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/light.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/matrix.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/PlayerData$PopulateSongsListJob.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/PlayerData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/observers/GraphicalPlayerDataObserver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/observers/NetworkPlayerDataObserver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/observers/PlayerDisplayObserver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/observers/SwapObserver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/player/MeteorPlayer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/song/MP3Song.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -44,14 +55,14 @@
         <counts>
           <entry key="codes" value="1" />
           <entry key="css" value="6" />
-          <entry key="java" value="59" />
+          <entry key="java" value="61" />
           <entry key="xml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="6" />
-          <entry key="JAVA" value="59" />
+          <entry key="JAVA" value="61" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="XML" value="2" />
         </counts>
@@ -61,16 +72,16 @@
           <entry key="codes" value="303" />
           <entry key="css" value="248" />
           <entry key="dummy" value="27" />
-          <entry key="java" value="26964" />
-          <entry key="txt" value="2058" />
+          <entry key="java" value="27596" />
+          <entry key="txt" value="2099" />
           <entry key="xml" value="22" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="248" />
-          <entry key="JAVA" value="26964" />
-          <entry key="PLAIN_TEXT" value="2388" />
+          <entry key="JAVA" value="27596" />
+          <entry key="PLAIN_TEXT" value="2429" />
           <entry key="XML" value="22" />
         </counts>
       </usages-collector>
@@ -90,11 +101,35 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/gui/DynamicSearch.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="113" column="14" selection-start-line="113" selection-start-column="14" selection-end-line="113" selection-end-column="14" />
+            <state relative-caret-position="-1697">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/model/PlayerData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="328">
+              <caret line="396" column="71" selection-start-line="396" selection-start-column="71" selection-end-line="396" selection-end-column="71" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/model/Codes.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
         </entry>
@@ -170,10 +205,11 @@
         <option value="$PROJECT_DIR$/src/main/resources/light.css" />
         <option value="$PROJECT_DIR$/src/main/java/player/MeteorPlayer.java" />
         <option value="$PROJECT_DIR$/src/main/java/observers/NetworkPlayerDataObserver.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/PlayerData.java" />
         <option value="$PROJECT_DIR$/src/main/java/broadcaster/ListBroadcaster.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/gui/DynamicSearch.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/PlayerData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/Codes.java" />
       </list>
     </option>
   </component>
@@ -289,11 +325,6 @@
               <item name="MeteorPlayer" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MeteorPlayer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MeteorPlayer" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -422,14 +453,21 @@
       <option name="project" value="LOCAL" />
       <updated>1563012401381</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Adjusted error recovery in search bar.">
+      <created>1563099404301</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1563099404302</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1922" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27267876" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27267876" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Learn" order="3" weight="0.32977587" />
@@ -437,7 +475,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32903227" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32903227" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -472,7 +510,8 @@
     <MESSAGE value="Refactored documentation on observers.&#10;Added checkbox for toggling random playing sequence" />
     <MESSAGE value="Tested feature for playing random songs.&#10;It didn't work correctly, and it does now.&#10;Tested changing between random and non random mode mid playing. Works as intended." />
     <MESSAGE value="Changed the return value of a job which opens songs.&#10;Previously it returned void, now it returns list of all loaded songs. &#10;This will be used for broadcasting of names of songs which were loaded." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed the return value of a job which opens songs.&#10;Previously it returned void, now it returns list of all loaded songs. &#10;This will be used for broadcasting of names of songs which were loaded." />
+    <MESSAGE value="Adjusted error recovery in search bar." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adjusted error recovery in search bar." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/song/MainMain.java" />
@@ -569,16 +608,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/PlayerData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="178" column="54" selection-start-line="178" selection-start-column="54" selection-end-line="178" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/player/MeteorPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="915">
@@ -625,8 +654,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gui/DynamicSearch.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="113" column="14" selection-start-line="113" selection-start-column="14" selection-end-line="113" selection-end-column="14" />
+        <state relative-caret-position="-1697">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/PlayerData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="396" column="71" selection-start-line="396" selection-start-column="71" selection-end-line="396" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Codes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
