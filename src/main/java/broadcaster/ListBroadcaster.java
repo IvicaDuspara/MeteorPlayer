@@ -167,6 +167,7 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
      */
     private void loadCodes() {
         communicationCodes = new HashMap<>();
+        clientCodeMap = new HashMap<>();
         BufferedReader bufferedReader;
         try{
             bufferedReader = Files.newBufferedReader(Paths.get("servercodes.txt"));
@@ -187,13 +188,14 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
             while((line = bufferedReader.readLine()) != null) {
                 codes.add(line);
             }
-            packagePrefix = "codes.concreteclientcodes.";
+            String packagePrefix2 = "codes.concreteclientcodes.";
             for(String code : codes) {
-                Class<IClientCode> iClientCodeClass = (Class<IClientCode>) Class.forName(packagePrefix + code);
+                System.out.println("CODELINE: " + code);
+                Class<IClientCode> iClientCodeClass = (Class<IClientCode>) Class.forName(packagePrefix2 + code);
                 IClientCode iConcrete = iClientCodeClass.getDeclaredConstructor().newInstance();
                 clientCodeMap.put(iConcrete.getClass().getSimpleName(), iConcrete);
             }
-            bufferedReader.close();
+//            bufferedReader.close();
         }catch(IOException exception) {
             Platform.runLater(() -> {
                 Alert alert = new Alert(Alert.AlertType.ERROR,"Failed to load codes used for communication.\nBroadcaster will not turn on.", ButtonType.CLOSE);
@@ -204,11 +206,11 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
         }
         catch(ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException exception) {
             Platform.runLater(() -> {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Error in instantaion of concrete codes.\nBroadcaster will not turn on.", ButtonType.CLOSE);
-                alert.setTitle("Error loading codes");
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Error in instantiation of concrete codes.\nBroadcaster will not turn on.", ButtonType.CLOSE);
+                alert.setTitle("Error instantiating codes");
                 alert.showAndWait();
             });
-            throw new RuntimeException(exception.getMessage());
+            throw new RuntimeException("Error in instantiation of concrete codes.");
         }
 
     }
