@@ -4,6 +4,7 @@ import codes.ICommunicationCode;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import model.Codes;
 import model.PlayerData;
 import observers.NetworkPlayerDataObserver;
 
@@ -187,9 +188,9 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
                 alert.setTitle("Error loading codes");
                 alert.showAndWait();
             });
-            System.out.println(exception.getMessage());
             throw new RuntimeException("Error in concrete codes instantation");
         }
+
     }
 
 
@@ -238,6 +239,9 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
     }
 
 
+    /**
+     *
+     */
     public void startBroadcast() {
         if(!isRunning) {
             isRunning = true;
@@ -256,7 +260,7 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
         }
         else {
             Platform.runLater(() -> {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Server is already running at: " + serverAddress.toString(), ButtonType.CLOSE);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Server is already running at: " + serverAddress.toString(), ButtonType.CLOSE);
                 alert.setTitle("Broadcast error");
                 alert.showAndWait();
             });
@@ -265,32 +269,76 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
 
     @Override
     public void update(String code) {
-        communicationCodes.get(code).execute();
+        try {
+            communicationCodes.get(code).execute(subject, clientWriters);
+        }catch (IOException exception) {
+            //TODO REMOVE THIS OR HANDLE IT PROPERLY
+            System.out.println("An error occured. YACK." + exception.getMessage());
+        }
     }
 
 
     /**
+     *
+     *
      * @author Ivica Duspara
      * @version 1.0
      */
     private class ClientWorker implements Runnable {
 
+        /**
+         * Client's socket reader.
+         */
         private BufferedReader bufferedReader;
 
+
+        /**
+         * Client's socket writer.
+         */
         private BufferedWriter bufferedWriter;
 
+
+        /**
+         * When a client connects to server it will send a code and its UUID.<br>
+         * This method saves UUID and appropriate writer to {@link #clientWriters}
+         *
+         * @throws IOException
+         *         if an error occurs while reading from reader
+         */
+        private void saveWriter() throws IOException{
+            bufferedReader.readLine();
+            clientWriters.put(bufferedReader.readLine(), bufferedWriter);
+        }
+
+
+        /**
+         * Constructs a new {@code ClientWorker} with given parameters.
+         *
+         * @param client
+         *        whose I/O streams are used for communication
+         *
+         * @throws IOException
+         *         if an error occurs while creating {@code ClientWorker}
+         */
         ClientWorker(Socket client) throws IOException{
             bufferedReader = new BufferedReader(new InputStreamReader(client.getInputStream(), Charset.forName("UTF-8")));
             bufferedWriter = new BufferedWriter(new OutputStreamWriter(client.getOutputStream(), Charset.forName("UTF-8")));
+            saveWriter();
         }
+
+
 
         @Override
         public void run() {
             System.out.println("Nalazim se u run metodi lets see what we got here: ");
-
             try {
-                while(bufferedReader != null) {
-                    String token = bufferedReader.readLine();
+                String token = "";
+                update(Codes.SERVER_SONG_LIST);
+              //  update(Codes.SERVER_QUEUE_LIST);
+              //  update(Codes.SERVER_NOW_PLAYING);
+               // update(Codes.SERVER_MY_QUEUED_SONG);
+                while(token != null) {
+                    token = bufferedReader.readLine();
                     System.out.println(token);
                 }
                 System.out.println("Kraj !");

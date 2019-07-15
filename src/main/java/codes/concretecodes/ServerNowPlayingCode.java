@@ -3,6 +3,10 @@ package codes.concretecodes;
 import codes.ICommunicationCode;
 import model.PlayerData;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.util.Map;
+
 /**
  * Sends currently playing song to client.
  *
@@ -12,7 +16,7 @@ import model.PlayerData;
 public class ServerNowPlayingCode implements ICommunicationCode {
 
     @Override
-    public void execute(PlayerData playerData) {
+    public void execute(PlayerData playerData, Map<String, BufferedWriter> writers) throws IOException {
 
     }
 }

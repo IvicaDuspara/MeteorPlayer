@@ -126,6 +126,16 @@ public class PlayerData {
 
 
     /**
+     * Returns most recent update of this {@code PlayerData}.
+     *
+     * @return most recent update of this {@code PlayerData}
+     */
+    public List<MP3Song> getMostRecentUpdate() {
+        return mostRecentUpdate;
+    }
+
+
+    /**
      * Returns {@code Map} which holds information on which client queued which song.<br>
      * Keys of such {@code Map} are MAC addresses of clients and values are {@link MP3Song MP3song} which is queued.
      *
@@ -458,6 +468,7 @@ public class PlayerData {
     public void startBroadcast() {
         broadcaster = ListBroadcaster.getInstance();
         broadcaster.setSubject(this);
+        addNetworkPlayerDataObserver(broadcaster);
         Thread t = new Thread(() -> broadcaster.startBroadcast());
         t.setDaemon(true);
         t.setName("Broadcaster thread");
