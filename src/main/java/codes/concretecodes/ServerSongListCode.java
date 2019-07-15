@@ -23,11 +23,9 @@ public class ServerSongListCode implements ICommunicationCode {
         for(Map.Entry<String,BufferedWriter> singleEntry : writers.entrySet()) {
             BufferedWriter writer = singleEntry.getValue();
             writer.write("SERVER_SONG_LIST");
-            System.out.println("Code failed?!");
             writer.newLine();
             for(MP3Song song : playerData.getMostRecentUpdate()) {
                 writer.write(song.toString());
-                System.out.println("Failed in writing" );
                 writer.newLine();
             }
             writer.write("SERVER_BROADCAST_ENDED");

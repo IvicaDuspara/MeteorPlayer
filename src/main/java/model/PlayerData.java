@@ -147,6 +147,28 @@ public class PlayerData {
 
 
     /**
+     * Returns currently playing song.
+     *
+     * @return
+     *         currently playing song
+     */
+    public MP3Song getCurrentlyPlayingSong() {
+        return currentlyPlayingSong;
+    }
+
+
+    /**
+     * Returns index of currently playing song.
+     *
+     * @return
+     *         currently playing song index.
+     */
+    public int getCurrentlyPlayingSongIndex() {
+        return currentlyPlayingSongIndex;
+    }
+
+
+    /**
      * Sets {@code queriedSongs} to {@code songs}
      *
      * @param songs
