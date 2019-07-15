@@ -174,7 +174,7 @@ public class PlayerData {
      */
     private void notifyNetworkPlayerDataObservers(String code) {
         for(NetworkPlayerDataObserver networkPlayerDataObserver : networkPlayerDataObserversList) {
-            networkPlayerDataObserver.update(code,this);
+            networkPlayerDataObserver.update(code);
         }
     }
 
@@ -457,6 +457,7 @@ public class PlayerData {
      */
     public void startBroadcast() {
         broadcaster = ListBroadcaster.getInstance();
+        broadcaster.setSubject(this);
         Thread t = new Thread(() -> broadcaster.startBroadcast());
         t.setDaemon(true);
         t.setName("Broadcaster thread");

@@ -1,6 +1,5 @@
 package observers;
 
-import model.PlayerData;
 
 /**
  * This interface represents observers which broadcast change over a network.<br>
@@ -17,7 +16,6 @@ public interface NetworkPlayerDataObserver {
      *
      * @param code which describes an update
      *
-     * @param playerData context whose data is broadcasted.
      */
-    void update(String code, PlayerData playerData);
+    void update(String code);
 }

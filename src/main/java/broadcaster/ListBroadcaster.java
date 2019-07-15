@@ -14,6 +14,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -88,6 +89,15 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
      * Executor pool
      */
     private ExecutorService pool;
+
+
+    /**
+     * Subject of this {@link NetworkPlayerDataObserver}.
+     */
+    private PlayerData subject;
+
+
+    private Map<String, BufferedWriter> clientWriters;
 
 
     /**
@@ -198,6 +208,7 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
             server = new ServerSocket();
             server.bind(serverAddress);
             pool = Executors.newFixedThreadPool(4);
+            clientWriters = new ConcurrentHashMap<>();
         }catch(SocketException | UnknownHostException exception) {
             Platform.runLater(() -> {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Error in finding IP address: ", ButtonType.CLOSE);
@@ -216,6 +227,15 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
     }
 
 
+    /**
+     * Sets subject of this {@code ListBroadcaster}
+     *
+     * @param subject
+     *        from which information is pulled when this {@code ListBroadcaster} is notified
+     */
+    public void setSubject(PlayerData subject) {
+        this.subject = subject;
+    }
 
 
     public void startBroadcast() {
@@ -244,7 +264,7 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
     }
 
     @Override
-    public void update(String code, PlayerData playerData) {
+    public void update(String code) {
 
     }
 
