@@ -48,9 +48,7 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
 
     private SceneCommand darkSkinCommand;
 
-    private SceneCommand startServerCommand;
-
-    private ModelCommand stopServerCommand;
+    private ModelCommand startServerCommand;
 
     private ModelCommand playSinanCommand;
 
@@ -154,7 +152,7 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
         networkMenu = new Menu("_Network");
         skinMenu = new Menu("_Skin");
         initFileMenu();
-       // initNetworkMenu();
+        initNetworkMenu();
         initSkinMenu();
         menuBar.getMenus().add(fileMenu);
         menuBar.getMenus().add(networkMenu);
@@ -166,8 +164,8 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
     /**
      * Initializes {@link #fileMenu {@code fileMenu}} with {@link ModelCommand ModelCommands}.
      *
-     * This method will assign appropriate {@code Commands} to {@code fileMenu}
-     * set style class of {@code fileMenu} and styles of added {@code Commands}.
+     * This method will assign appropriate {@code ModelCommands} to {@code fileMenu},
+     * set style class of {@code fileMenu} and styles of added {@code ModelCommands}.
      */
     private void initFileMenu() {
         openCommand = new OpenCommand(window,playerData,"Open...");
@@ -177,6 +175,26 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
     }
 
 
+    /**
+     * Initializes {@link #networkMenu {@code networkMenu}} with {@link ModelCommand ModelCommands}.
+     *
+     * This method will assign appropriate {@code ModelCommands} to {@code networkMenu},
+     * set style class of {@code networkMenu} and styles of added {@code ModelCommands}.
+     */
+    private void initNetworkMenu() {
+        startServerCommand = new NetworkCommand(playerData, "Start Server");
+        networkMenu.getItems().add(startServerCommand);
+        networkMenu.getStyleClass().add("menu");
+        startServerCommand.getStyleClass().add("menuitem");
+    }
+
+
+    /**
+     * Initializes {@link #skinMenu {@code skinMenu}} with {@link SceneCommand SceneCommands}.
+     *
+     * This method will assign appropriate {@code SkinCommands} to {@code skinMenu}
+     * set style class of {@code skinMenu}  and styles of added {@code SceneCommands}.
+     */
     private void initSkinMenu() {
         lightSkinCommand = new LightSkinCommand(scene,"Light skin");
         darkSkinCommand = new DarkSkinCommand(scene,"Dark skin");
@@ -186,6 +204,8 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
         lightSkinCommand.getStyleClass().add("menuitem");
         darkSkinCommand.getStyleClass().add("menuitem");
     }
+
+
 
 
     /**

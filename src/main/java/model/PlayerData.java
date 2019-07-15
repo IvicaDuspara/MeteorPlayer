@@ -443,12 +443,27 @@ public class PlayerData {
         }
     }
 
+
     /**
      * Closes {@code PlayerData}
      */
     public void closePlayerData() {
         pool.shutdown();
     }
+
+
+    /**
+     * Starts broadcast.
+     */
+    public void startBroadcast() {
+        broadcaster = ListBroadcaster.getInstance();
+        Thread t = new Thread(() -> broadcaster.startBroadcast());
+        t.setDaemon(true);
+        t.setName("Broadcaster thread");
+        t.start();
+    }
+
+
 
     /**
      *
