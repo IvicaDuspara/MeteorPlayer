@@ -2,4 +2,3 @@ ServerSongListCode
 ServerQueueListCode
 ServerNowPlayingCode
 ServerMoveUpCode
-ClientQueueCode

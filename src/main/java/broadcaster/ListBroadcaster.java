@@ -208,7 +208,7 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
                 alert.setTitle("Error loading codes");
                 alert.showAndWait();
             });
-            throw new RuntimeException("Error in concrete codes instantation");
+            throw new RuntimeException(exception.getMessage());
         }
 
     }
