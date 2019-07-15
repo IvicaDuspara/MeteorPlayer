@@ -1,6 +1,6 @@
-package codes.concretecodes;
+package codes.concreteservercodes;
 
-import codes.ICommunicationCode;
+import codes.IServerCode;
 import model.PlayerData;
 
 import java.io.BufferedWriter;
@@ -13,7 +13,7 @@ import java.util.Map;
  * @author Ivica Duspara
  * @version 1.0
  */
-public class ServerMoveUpCode implements ICommunicationCode {
+public class ServerMoveUpCode implements IServerCode {
 
     @Override
     public void execute(PlayerData playerData, Map<String, BufferedWriter> writers) throws IOException {

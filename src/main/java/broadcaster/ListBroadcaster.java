@@ -1,6 +1,7 @@
 package broadcaster;
 
-import codes.ICommunicationCode;
+import codes.IClientCode;
+import codes.IServerCode;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -61,11 +62,17 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
 
 
     /**
-     * {@code Map} for holding {@link ICommunicationCode codes} which
+     * {@code Map} for holding {@link IServerCode codes} which
      * perform an operation depending of contents of {@link model.Codes codes} which
      * describe action in {@link model.PlayerData PlayerData model}
      */
-    private Map<String, ICommunicationCode> communicationCodes;
+    private Map<String, IServerCode> communicationCodes;
+
+    /**
+     * {@code Map} for holding {@link IClientCode codes} which
+     * describe client's request which changes {@link model.PlayerData PlayerData model}
+     */
+    private Map<String, IClientCode> clientCodeMap;
 
 
     /**
@@ -156,24 +163,37 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
 
 
     /**
-     * Loads codes found in {@link codes.concretecodes concretecodes} into {@link #communicationCodes}.<br>
+     * Loads codes found in {@link codes.concreteservercodes concreteservercodes} into {@link #communicationCodes}.<br>
      */
     private void loadCodes() {
         communicationCodes = new HashMap<>();
         BufferedReader bufferedReader;
         try{
-            bufferedReader = Files.newBufferedReader(Paths.get("codes.txt"));
+            bufferedReader = Files.newBufferedReader(Paths.get("servercodes.txt"));
             List<String> codes = new ArrayList<>();
             String line = "";
             while((line = bufferedReader.readLine()) != null) {
                 codes.add(line);
             }
-            String packagePrefix = "codes.concretecodes.";
+            String packagePrefix = "codes.concreteservercodes.";
             for(String code : codes) {
-                Class<ICommunicationCode> iCommunicationCodeClass = (Class<ICommunicationCode>) Class.forName(packagePrefix + code);
-                ICommunicationCode iConcrete = iCommunicationCodeClass.getDeclaredConstructor().newInstance();
+                Class<IServerCode> iCommunicationCodeClass = (Class<IServerCode>) Class.forName(packagePrefix + code);
+                IServerCode iConcrete = iCommunicationCodeClass.getDeclaredConstructor().newInstance();
                 communicationCodes.put(iConcrete.getClass().getSimpleName(), iConcrete);
             }
+            bufferedReader.close();
+            bufferedReader = Files.newBufferedReader(Paths.get("clientcodes.txt"));
+            codes.clear();
+            while((line = bufferedReader.readLine()) != null) {
+                codes.add(line);
+            }
+            packagePrefix = "codes.concreteclientcodes.";
+            for(String code : codes) {
+                Class<IClientCode> iClientCodeClass = (Class<IClientCode>) Class.forName(packagePrefix + code);
+                IClientCode iConcrete = iClientCodeClass.getDeclaredConstructor().newInstance();
+                clientCodeMap.put(iConcrete.getClass().getSimpleName(), iConcrete);
+            }
+            bufferedReader.close();
         }catch(IOException exception) {
             Platform.runLater(() -> {
                 Alert alert = new Alert(Alert.AlertType.ERROR,"Failed to load codes used for communication.\nBroadcaster will not turn on.", ButtonType.CLOSE);
@@ -334,7 +354,7 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
             try {
                 String token = "";
                 update(Codes.SERVER_SONG_LIST);
-              //  update(Codes.SERVER_QUEUE_LIST);
+                update(Codes.SERVER_QUEUE_LIST);
               //  update(Codes.SERVER_NOW_PLAYING);
                // update(Codes.SERVER_MY_QUEUED_SONG);
                 while(token != null) {

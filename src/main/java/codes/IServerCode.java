@@ -8,14 +8,14 @@ import java.util.Map;
 
 /**
  * Abstract strategy for code communication.<br>
- * When {@code MeteorPlayer} communicates with clients on changes (song change, queue changed, more songs loaded etc.)
- * appropriate codes are sent.<br>
- * Each concrete strategy will simply send appropriate code, needed data and signal for an end.
+ *
+ * When {@link PlayerData model} performs an action which should notify interested observers (change of currently played song,
+ * more songs added...) it will do so by using appropriate {@code IServerCode}.<br>
  *
  * @author Ivica Duspara
  * @version 1.0
  */
-public interface ICommunicationCode {
+public interface IServerCode {
 
     /**
      * Executes action which is specific for this {@code ICommunicationCode}

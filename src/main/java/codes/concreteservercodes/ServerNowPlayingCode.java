@@ -1,8 +1,7 @@
-package codes.concretecodes;
+package codes.concreteservercodes;
 
-import codes.ICommunicationCode;
+import codes.IServerCode;
 import model.PlayerData;
-import song.MP3Song;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -14,7 +13,7 @@ import java.util.Map;
  * @author Ivica Duspara
  * @version 1.0
  */
-public class ServerNowPlayingCode implements ICommunicationCode {
+public class ServerNowPlayingCode implements IServerCode {
 
     @Override
     public void execute(PlayerData playerData, Map<String, BufferedWriter> writers) throws IOException {
