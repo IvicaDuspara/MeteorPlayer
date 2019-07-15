@@ -10,6 +10,7 @@ import observers.NetworkPlayerDataObserver;
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.net.*;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -254,8 +255,8 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
         private BufferedWriter bufferedWriter;
 
         ClientWorker(Socket client) throws IOException{
-            bufferedReader = new BufferedReader(new InputStreamReader(client.getInputStream()));
-            bufferedWriter = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
+            bufferedReader = new BufferedReader(new InputStreamReader(client.getInputStream(), Charset.forName("UTF-8")));
+            bufferedWriter = new BufferedWriter(new OutputStreamWriter(client.getOutputStream(), Charset.forName("UTF-8")));
         }
 
         @Override
