@@ -1,6 +1,7 @@
 package codes.concretecodes;
 
 import codes.ICommunicationCode;
+import model.PlayerData;
 
 /**
  * Sends list of currently queued songs to all clients.<br>
@@ -11,7 +12,7 @@ import codes.ICommunicationCode;
 public class ServerQueueListCode implements ICommunicationCode {
 
     @Override
-    public void execute() {
+    public void execute(PlayerData playerData) {
 
     }
 }

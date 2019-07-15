@@ -1,6 +1,7 @@
 package codes.concretecodes;
 
 import codes.ICommunicationCode;
+import model.PlayerData;
 
 /**
  * Sends currently playing song to client.
@@ -11,7 +12,7 @@ import codes.ICommunicationCode;
 public class ServerNowPlayingCode implements ICommunicationCode {
 
     @Override
-    public void execute() {
+    public void execute(PlayerData playerData) {
 
     }
 }

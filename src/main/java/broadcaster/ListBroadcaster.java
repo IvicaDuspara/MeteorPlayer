@@ -265,9 +265,14 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
 
     @Override
     public void update(String code) {
-        communicationCodes.get(code).sendCode();
+        communicationCodes.get(code).execute();
     }
 
+
+    /**
+     * @author Ivica Duspara
+     * @version 1.0
+     */
     private class ClientWorker implements Runnable {
 
         private BufferedReader bufferedReader;

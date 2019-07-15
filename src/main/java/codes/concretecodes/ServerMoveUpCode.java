@@ -1,6 +1,7 @@
 package codes.concretecodes;
 
 import codes.ICommunicationCode;
+import model.PlayerData;
 
 /**
  * Sends information to clients to move their queue by one up.
@@ -11,7 +12,7 @@ import codes.ICommunicationCode;
 public class ServerMoveUpCode implements ICommunicationCode {
 
     @Override
-    public void execute() {
+    public void execute(PlayerData playerData) {
 
     }
 }
