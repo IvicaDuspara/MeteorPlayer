@@ -3,19 +3,18 @@ package broadcaster;
 import codes.ICommunicationCode;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import model.PlayerData;
 import observers.NetworkPlayerDataObserver;
 
-import java.io.BufferedReader;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.InvocationTargetException;
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.net.SocketAddress;
-import java.net.SocketException;
+import java.net.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 
 /**
@@ -78,6 +77,16 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
     private SocketAddress serverAddress;
 
 
+    /**
+     *  ServerSocket of {@code ListBroadcaster}
+     */
+    private ServerSocket server;
+
+
+    /**
+     * Executor pool
+     */
+    private ExecutorService pool;
 
 
     /**
@@ -134,17 +143,17 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
     }
 
 
-
-
-    private ListBroadcaster() {
+    /**
+     * Loads codes found in {@link codes.concretecodes concretecodes} into {@link #communicationCodes}.<br>
+     */
+    private void loadCodes() {
         communicationCodes = new HashMap<>();
-        BufferedReader br;
-        isRunning = false;
-        try {
-            br = Files.newBufferedReader(Paths.get("codes.txt"));
+        BufferedReader bufferedReader;
+        try{
+            bufferedReader = Files.newBufferedReader(Paths.get("codes.txt"));
             List<String> codes = new ArrayList<>();
-            String line ="";
-            while((line = br.readLine()) != null) {
+            String line = "";
+            while((line = bufferedReader.readLine()) != null) {
                 codes.add(line);
             }
             String packagePrefix = "codes.concretecodes.";
@@ -153,22 +162,80 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
                 ICommunicationCode iConcrete = iCommunicationCodeClass.getDeclaredConstructor().newInstance();
                 communicationCodes.put(iConcrete.getClass().getSimpleName(), iConcrete);
             }
-        }catch(IOException ex){
-            throw new RuntimeException("Failed to load codes. Place codes file in source path");
-        }catch(ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException ex) {
-            throw new RuntimeException(ex.getMessage());
+        }catch(IOException exception) {
+            Platform.runLater(() -> {
+                Alert alert = new Alert(Alert.AlertType.ERROR,"Failed to load codes used for communication.\nBroadcaster will not turn on.", ButtonType.CLOSE);
+                alert.setTitle("Error loading codes");
+                alert.showAndWait();
+            });
+            throw new RuntimeException("Error loading codes.");
+        }
+        catch(ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException exception) {
+            Platform.runLater(() -> {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Error in instantaion of concrete codes.\nBroadcaster will not turn on.", ButtonType.CLOSE);
+                alert.setTitle("Error loading codes");
+                alert.showAndWait();
+            });
+            System.out.println(exception.getMessage());
+            throw new RuntimeException("Error in concrete codes instantation");
         }
     }
+
+
+    /**
+     * Constructs a new {@code ListBroadcaster}
+     */
+    private ListBroadcaster() {
+        isRunning = false;
+        try{
+            loadCodes();
+        }catch(RuntimeException exception) {
+            throw new RuntimeException("Exception occurred in construction: " + exception.getMessage());
+        }
+        try{
+            serverAddress = new InetSocketAddress(InetAddress.getByName(findLocalIPAddress()),PORT);
+            server = new ServerSocket();
+            server.bind(serverAddress);
+            pool = Executors.newFixedThreadPool(4);
+        }catch(SocketException | UnknownHostException exception) {
+            Platform.runLater(() -> {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Error in finding IP address: ", ButtonType.CLOSE);
+                alert.setTitle("Address error");
+                alert.showAndWait();
+            });
+            throw new RuntimeException(exception.getMessage());
+        }catch(IOException exception) {
+            Platform.runLater(() -> {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Error in creating a connection: ", ButtonType.CLOSE);
+                alert.setTitle("Socket error");
+                alert.showAndWait();
+            });
+            throw new RuntimeException(exception.getMessage());
+        }
+    }
+
+
 
 
     public void startBroadcast() {
         if(!isRunning) {
             isRunning = true;
+            try{
+                System.out.println("Server is running at: " + serverAddress);
+                while(isRunning) {
+                    Socket client = server.accept();
+                    ClientWorker worker = new ClientWorker(client);
+                    pool.submit(worker);
+                }
+            }catch(IOException exception) {
+                System.out.println(exception);
+            }
+
 
         }
         else {
             Platform.runLater(() -> {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Server is already running at: " + serverAddress.toString());
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Server is already running at: " + serverAddress.toString(), ButtonType.CLOSE);
                 alert.setTitle("Broadcast error");
                 alert.showAndWait();
             });
@@ -178,5 +245,32 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
     @Override
     public void update(String code, PlayerData playerData) {
 
+    }
+
+    private class ClientWorker implements Runnable {
+
+        private BufferedReader bufferedReader;
+
+        private BufferedWriter bufferedWriter;
+
+        ClientWorker(Socket client) throws IOException{
+            bufferedReader = new BufferedReader(new InputStreamReader(client.getInputStream()));
+            bufferedWriter = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
+        }
+
+        @Override
+        public void run() {
+            System.out.println("Nalazim se u run metodi lets see what we got here: ");
+
+            try {
+                while(bufferedReader != null) {
+                    String token = bufferedReader.readLine();
+                    System.out.println(token);
+                }
+                System.out.println("Kraj !");
+            }catch(IOException exception) {
+                System.out.println("Greška at: " + exception.getMessage());
+            }
+        }
     }
 }
