@@ -249,6 +249,37 @@ public class PlayerData {
 
 
     /**
+     *
+     *
+     *
+     * @param queuerUUID
+     *        identification of who put song in queue
+     *
+     * @param requestedSong
+     *        which is put in queue
+     *
+     * @return
+     *         index at which requested song is enqueued
+     */
+    public synchronized int enqueueSong(String queuerUUID, MP3Song requestedSong) {
+        int result = 0;
+        MP3Song token = whomstQueued.get(queuerUUID);
+        if(token == null) {
+            queuedSongs.add(requestedSong);
+            whomstQueued.put(queuerUUID,requestedSong);
+            result = queuedSongs.size() - 1;
+        }
+        else {
+            whomstQueued.put(queuerUUID,requestedSong);
+            result = new ArrayList<>(whomstQueued.values()).indexOf(requestedSong);
+            queuedSongs.set(result,requestedSong);
+        }
+        return result;
+    }
+
+
+
+    /**
      * Plays {@code clickedSong}. This method is called when a user
      * clicks on a song which they wish to play.
      *

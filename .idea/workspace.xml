@@ -7,15 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1008d3e-10db-4d65-8be4-b1a277ca8749" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/commands/ModelCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/commands/NetworkCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/commands/SceneCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/Command.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/DarkSkinCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/DarkSkinCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/LightSkinCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/LightSkinCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/commands/OpenCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/commands/OpenCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/player/MeteorPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/player/MeteorPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/broadcaster/ListBroadcaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/broadcaster/ListBroadcaster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/PlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/PlayerData.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -29,19 +23,19 @@
     <session id="-342024217">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="10" />
+          <entry key="project.closed" value="11" />
           <entry key="project.open.time.0" value="3" />
           <entry key="project.open.time.6" value="3" />
-          <entry key="project.open.time.7" value="3" />
+          <entry key="project.open.time.7" value="4" />
           <entry key="project.open.time.8" value="2" />
-          <entry key="project.opened" value="11" />
+          <entry key="project.opened" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="codes" value="1" />
           <entry key="css" value="6" />
-          <entry key="java" value="88" />
+          <entry key="java" value="90" />
           <entry key="txt" value="1" />
           <entry key="xml" value="2" />
         </counts>
@@ -49,7 +43,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="6" />
-          <entry key="JAVA" value="88" />
+          <entry key="JAVA" value="90" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="XML" value="2" />
         </counts>
@@ -59,16 +53,16 @@
           <entry key="codes" value="303" />
           <entry key="css" value="248" />
           <entry key="dummy" value="27" />
-          <entry key="java" value="30287" />
-          <entry key="txt" value="2664" />
+          <entry key="java" value="31527" />
+          <entry key="txt" value="2799" />
           <entry key="xml" value="22" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="248" />
-          <entry key="JAVA" value="30287" />
-          <entry key="PLAIN_TEXT" value="2994" />
+          <entry key="JAVA" value="31527" />
+          <entry key="PLAIN_TEXT" value="3129" />
           <entry key="XML" value="22" />
         </counts>
       </usages-collector>
@@ -77,10 +71,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/commands/SceneCommand.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/broadcaster/ListBroadcaster.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+            <state relative-caret-position="626">
+              <caret line="80" selection-start-line="80" selection-end-line="80" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -89,46 +83,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/player/MeteorPlayer.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/model/PlayerData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="166" column="84" selection-start-line="166" selection-start-column="84" selection-end-line="166" selection-end-column="84" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/commands/OpenCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" column="6" lean-forward="true" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="6" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/commands/LightSkinCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/commands/DarkSkinCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
+            <state relative-caret-position="364">
+              <caret line="252" column="7" selection-start-line="252" selection-start-column="7" selection-end-line="252" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -192,7 +150,6 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/gui/DynamicSearch.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Codes.java" />
-        <option value="$PROJECT_DIR$/src/main/java/broadcaster/ListBroadcaster.java" />
         <option value="$PROJECT_DIR$/src/main/java/codes/concretecodes/ServerSongList.java" />
         <option value="$PROJECT_DIR$/src/main/java/codes.txt" />
         <option value="$PROJECT_DIR$/src/main/java/codes/ICommunicationCode.java" />
@@ -200,7 +157,6 @@
         <option value="$PROJECT_DIR$/src/main/java/codes/concretecodes/ServerSongListCode.java" />
         <option value="$PROJECT_DIR$/src/main/java/codes/concretecodes/ServerQueueListCode.java" />
         <option value="$PROJECT_DIR$/src/main/java/codes/concretecodes/ServerNowPlayingCode.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/PlayerData.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/LightSkinCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/DarkSkinCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/NetworkCommand.java" />
@@ -209,6 +165,8 @@
         <option value="$PROJECT_DIR$/src/main/java/commands/ModelCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/commands/SceneCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/player/MeteorPlayer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/broadcaster/ListBroadcaster.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/PlayerData.java" />
       </list>
     </option>
   </component>
@@ -221,7 +179,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -337,6 +294,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -346,7 +304,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -482,20 +440,27 @@
       <option name="project" value="LOCAL" />
       <updated>1563101510810</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Seperated commands which operate on model and those which just operate on scene.&#10;Tested them out, working as intended.">
+      <created>1563119323269</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1563119323269</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1922" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27588046" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27908218" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Learn" order="3" weight="0.32977587" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.32903227" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32903227" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32903227" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -535,7 +500,8 @@
     <MESSAGE value="Adjusted error recovery in search bar." />
     <MESSAGE value="Added Codes class in package model.&#10;These codes describe change which occurred to network broadcaster." />
     <MESSAGE value="Added skeletons for communication codes.&#10;Added codes.txt file so generic factory can load those codes and instance them.&#10;Player data has a new member - most recent load -&gt; used for extra information on additional songs are opened to send only those songs." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added skeletons for communication codes.&#10;Added codes.txt file so generic factory can load those codes and instance them.&#10;Player data has a new member - most recent load -&gt; used for extra information on additional songs are opened to send only those songs." />
+    <MESSAGE value="Seperated commands which operate on model and those which just operate on scene.&#10;Tested them out, working as intended." />
+    <option name="LAST_COMMIT_MESSAGE" value="Seperated commands which operate on model and those which just operate on scene.&#10;Tested them out, working as intended." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/song/MainMain.java" />
@@ -674,53 +640,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/broadcaster/ListBroadcaster.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1440">
-          <caret line="108" column="42" selection-start-line="108" selection-start-column="42" selection-end-line="108" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/PlayerData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1005">
-          <caret line="82" column="30" selection-start-line="82" selection-start-column="30" selection-end-line="82" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/DarkSkinCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/LightSkinCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/Command.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/Command.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/commands/NetworkCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -743,18 +663,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/commands/SceneCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
+        <state relative-caret-position="420">
           <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/commands/OpenCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="6" lean-forward="true" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="6" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -763,8 +673,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/player/MeteorPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="166" column="84" selection-start-line="166" selection-start-column="84" selection-end-line="166" selection-end-column="84" />
+        <state relative-caret-position="2115">
+          <caret line="152" column="37" selection-start-line="152" selection-start-column="37" selection-end-line="152" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/OpenCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="37" column="6" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/LightSkinCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/commands/DarkSkinCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/broadcaster/ListBroadcaster.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="626">
+          <caret line="80" selection-start-line="80" selection-end-line="80" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/PlayerData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="252" column="7" selection-start-line="252" selection-start-column="7" selection-end-line="252" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -1,6 +1,8 @@
 package broadcaster;
 
 import codes.ICommunicationCode;
+import javafx.application.Platform;
+import javafx.scene.control.Alert;
 import model.PlayerData;
 import observers.NetworkPlayerDataObserver;
 
@@ -9,6 +11,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
+import java.net.SocketAddress;
 import java.net.SocketException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -56,6 +59,42 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
 
 
     /**
+     * {@code Map} for holding {@link ICommunicationCode codes} which
+     * perform an operation depending of contents of {@link model.Codes codes} which
+     * describe action in {@link model.PlayerData PlayerData model}
+     */
+    private Map<String, ICommunicationCode> communicationCodes;
+
+
+    /**
+     * Indicates whether this broadcaster is running
+     */
+    private boolean isRunning;
+
+
+    /**
+     * Socket address of this singleton.
+     */
+    private SocketAddress serverAddress;
+
+
+
+
+    /**
+     * Returns singleton instance of {@code ListBroadcaster}
+     *
+     * @return
+     *        singleton instance of {@code ListBroadcaster}
+     */
+    public static ListBroadcaster getInstance() {
+        if(LIST_BROADCASTER_SINGLETON == null) {
+            LIST_BROADCASTER_SINGLETON = new ListBroadcaster();
+        }
+        return LIST_BROADCASTER_SINGLETON;
+    }
+
+
+    /**
      * Returns a String representing an IP address of this machine which begins with {@link #LOCAL_IP_16BIT_ALIKE} or
      * {@link #LOCAL_IP_24BIT_ALIKE} or {@link #LOCAL_IP_20BIT_ALIKE}.
      *
@@ -94,11 +133,13 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
         return hostAddress;
     }
 
-    private Map<String, ICommunicationCode> communicationCodes;
+
+
 
     private ListBroadcaster() {
         communicationCodes = new HashMap<>();
         BufferedReader br;
+        isRunning = false;
         try {
             br = Files.newBufferedReader(Paths.get("codes.txt"));
             List<String> codes = new ArrayList<>();
@@ -119,13 +160,20 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
         }
     }
 
-    public static ListBroadcaster getInstance() {
-        if(LIST_BROADCASTER_SINGLETON == null) {
-            LIST_BROADCASTER_SINGLETON = new ListBroadcaster();
-        }
-        return LIST_BROADCASTER_SINGLETON;
-    }
 
+    public void startBroadcast() {
+        if(!isRunning) {
+            isRunning = true;
+
+        }
+        else {
+            Platform.runLater(() -> {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Server is already running at: " + serverAddress.toString());
+                alert.setTitle("Broadcast error");
+                alert.showAndWait();
+            });
+        }
+    }
 
     @Override
     public void update(String code, PlayerData playerData) {
