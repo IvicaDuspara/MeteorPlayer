@@ -11,6 +11,8 @@ package codes;
  */
 public interface ICommunicationCode {
 
-
-    void sendCode();
+    /**
+     * Executes action which is specific for this {@code ICommunicationCode}
+     */
+    void execute();
 }

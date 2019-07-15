@@ -11,7 +11,7 @@ import codes.ICommunicationCode;
 public class ServerMoveUpCode implements ICommunicationCode {
 
     @Override
-    public void sendCode() {
+    public void execute() {
 
     }
 }

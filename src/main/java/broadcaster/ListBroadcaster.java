@@ -265,7 +265,7 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
 
     @Override
     public void update(String code) {
-
+        communicationCodes.get(code).sendCode();
     }
 
     private class ClientWorker implements Runnable {

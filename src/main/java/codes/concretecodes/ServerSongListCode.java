@@ -12,7 +12,7 @@ import codes.ICommunicationCode;
 public class ServerSongListCode implements ICommunicationCode {
 
     @Override
-    public void sendCode() {
+    public void execute() {
 
     }
 }

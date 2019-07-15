@@ -11,7 +11,7 @@ import codes.ICommunicationCode;
 public class ServerNowPlayingCode implements ICommunicationCode {
 
     @Override
-    public void sendCode() {
+    public void execute() {
 
     }
 }
