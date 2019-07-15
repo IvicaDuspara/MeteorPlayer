@@ -6,7 +6,6 @@ import song.MP3Song;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.util.Map;
 
 /**
  * Sends list of currently loaded songs to all of clients.<br>
@@ -19,9 +18,7 @@ public class ServerSongListCode implements IServerCode {
 
 
     @Override
-    public void execute(PlayerData playerData, Map<String, BufferedWriter> writers) throws IOException {
-        for(Map.Entry<String,BufferedWriter> singleEntry : writers.entrySet()) {
-            BufferedWriter writer = singleEntry.getValue();
+    public void execute(PlayerData playerData, BufferedWriter writer) throws IOException {
             writer.write("SERVER_SONG_LIST");
             writer.newLine();
             for(MP3Song song : playerData.getMostRecentUpdate()) {
@@ -31,6 +28,5 @@ public class ServerSongListCode implements IServerCode {
             writer.write("SERVER_BROADCAST_ENDED");
             writer.newLine();
             writer.flush();
-        }
     }
 }

@@ -5,7 +5,7 @@ import model.PlayerData;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.util.Map;
+
 
 /**
  * Sends information to clients to move their queue by one up.
@@ -16,7 +16,11 @@ import java.util.Map;
 public class ServerMoveUpCode implements IServerCode {
 
     @Override
-    public void execute(PlayerData playerData, Map<String, BufferedWriter> writers) throws IOException {
-
+    public void execute(PlayerData playerData, BufferedWriter writer) throws IOException {
+            writer.write("SERVER_MOVE_UP");
+            writer.newLine();
+            writer.write("SERVER_BROADCAST_ENDED");
+            writer.newLine();
+            writer.flush();
     }
 }

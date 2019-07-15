@@ -16,12 +16,13 @@ import java.util.Map;
 public class ServerNowPlayingCode implements IServerCode {
 
     @Override
-    public void execute(PlayerData playerData, Map<String, BufferedWriter> writers) throws IOException {
-        for(Map.Entry<String, BufferedWriter> singleWriter : writers.entrySet()) {
-            BufferedWriter writer = singleWriter.getValue();
+    public void execute(PlayerData playerData, BufferedWriter writer) throws IOException {
             writer.write("SERVER_NOW_PLAYING");
             writer.newLine();
-
-        }
+            writer.write(playerData.getCurrentlyPlayingSong().toString());
+            writer.newLine();
+            writer.write("SERVER_BROADCAST_ENDED");
+            writer.newLine();
+            writer.flush();
     }
 }

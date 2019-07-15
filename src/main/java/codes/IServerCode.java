@@ -23,12 +23,12 @@ public interface IServerCode {
      * @param playerData
      *        context on which action is performed
      *
-     * @param writers
+     * @param writer
      *        map of client's socket writers which are used for writing to client
      *
      * @throws IOException
      *         if an error occurs while writing to any of writers in {@code writers}
      */
-    void execute(PlayerData playerData, Map<String, BufferedWriter> writers) throws IOException;
+    void execute(PlayerData playerData, BufferedWriter writer) throws IOException;
 
 }

@@ -1,5 +1,6 @@
 package observers;
 
+import javafx.collections.ObservableList;
 import song.MP3Song;
 
 /**
@@ -25,5 +26,14 @@ public interface GraphicalPlayerDataObserver {
      *
      */
     void update(int currentIndex, MP3Song currentSong, MP3Song nextInLine);
+
+
+    /**
+     * Notifies PlayerDisplay to update displayed queued songs
+     *
+     * @param songs
+     *        which will be displayed in ListView
+     */
+    void updateQueuedSongs(ObservableList<MP3Song> songs);
 
 }

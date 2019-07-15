@@ -287,24 +287,38 @@ public class PlayerData {
      * @param queuerUUID
      *        identification of who put song in queue
      *
-     * @param requestedSong
+     * @param song
      *        which is put in queue
      *
      * @return
      *         index at which requested song is enqueued
      */
-    public synchronized int enqueueSong(String queuerUUID, MP3Song requestedSong) {
+    public synchronized int enqueueSong(String queuerUUID, String song) {
+        MP3Song requestedSong = null;
+        for(MP3Song  mp3Song : loadedSongs) {
+            if(mp3Song.toString().equals(song)) {
+                requestedSong = mp3Song;
+            }
+        }
+        final MP3Song song1 = requestedSong;
         int result = 0;
         MP3Song token = whomstQueued.get(queuerUUID);
         if(token == null) {
-            queuedSongs.add(requestedSong);
+            Platform.runLater(() -> {
+                queuedSongs.add(song1);
+            });
             whomstQueued.put(queuerUUID,requestedSong);
             result = queuedSongs.size() - 1;
         }
         else {
             whomstQueued.put(queuerUUID,requestedSong);
             result = new ArrayList<>(whomstQueued.values()).indexOf(requestedSong);
-            queuedSongs.set(result,requestedSong);
+            queuedSongs = FXCollections.observableArrayList(whomstQueued.values());
+            Platform.runLater(() -> {
+                for(GraphicalPlayerDataObserver o : graphicalPlayerDataObserversList) {
+                    o.updateQueuedSongs(queuedSongs);
+                }
+            });
         }
         return result;
     }

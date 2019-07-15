@@ -8,6 +8,7 @@ import javafx.scene.control.ButtonType;
 import model.Codes;
 import model.PlayerData;
 import observers.NetworkPlayerDataObserver;
+import song.MP3Song;
 
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
@@ -190,7 +191,6 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
             }
             String packagePrefix2 = "codes.concreteclientcodes.";
             for(String code : codes) {
-                System.out.println("CODELINE: " + code);
                 Class<IClientCode> iClientCodeClass = (Class<IClientCode>) Class.forName(packagePrefix2 + code);
                 IClientCode iConcrete = iClientCodeClass.getDeclaredConstructor().newInstance();
                 clientCodeMap.put(iConcrete.getClass().getSimpleName(), iConcrete);
@@ -292,7 +292,9 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
     @Override
     public void update(String code) {
         try {
-            communicationCodes.get(code).execute(subject, clientWriters);
+            for(BufferedWriter writer : clientWriters.values()) {
+                communicationCodes.get(code).execute(subject, writer);
+            }
         }catch (IOException exception) {
             //TODO REMOVE THIS OR HANDLE IT PROPERLY
             System.out.println("An error occured. YACK." + exception.getMessage());
@@ -356,12 +358,29 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
             try {
                 String token = "";
                 update(Codes.SERVER_SONG_LIST);
-                update(Codes.SERVER_QUEUE_LIST);
-              //  update(Codes.SERVER_NOW_PLAYING);
-               // update(Codes.SERVER_MY_QUEUED_SONG);
+                //update(Codes.SERVER_QUEUE_LIST);
+                bufferedWriter.write("SERVER_QUEUE_LIST");
+                bufferedWriter.newLine();
+                for(Map.Entry<String, MP3Song> wqentry : subject.getWhomstQueued().entrySet()) {
+                    bufferedWriter.write(wqentry.getValue().toString());
+                    bufferedWriter.newLine();
+                    bufferedWriter.write(wqentry.getKey());
+                    bufferedWriter.newLine();
+                }
+                bufferedWriter.write("SERVER_BROADCAST_ENDED");
+                bufferedWriter.newLine();
+                bufferedWriter.flush();
+                update(Codes.SERVER_NOW_PLAYING);
+
                 while(token != null) {
                     token = bufferedReader.readLine();
-                    System.out.println(token);
+                    if(token.equals("CLIENT_QUEUE")) {
+                        clientCodeMap.get(Codes.CLIENT_QUEUE).execute(subject,clientWriters,bufferedReader);
+                    }
+                    else if(token.equals("CLIENT_DISCONNECT")) {
+                        token = bufferedReader.readLine();
+                        clientWriters.remove(token);
+                    }
                 }
                 System.out.println("Kraj !");
             }catch(IOException exception) {

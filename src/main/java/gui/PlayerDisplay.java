@@ -203,6 +203,11 @@ public class PlayerDisplay implements GraphicalPlayerDataObserver, SwapObserver 
     }
 
     @Override
+    public void updateQueuedSongs(ObservableList<MP3Song> songs) {
+        queuedSongsView.setItems(songs);
+    }
+
+    @Override
     public void swapToQueriedView() {
         for(PlayerDisplayObserver observer : playerDisplayObserverList) {
             observer.setQueriedList();
