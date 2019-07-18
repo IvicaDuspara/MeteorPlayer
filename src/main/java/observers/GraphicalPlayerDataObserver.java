@@ -29,11 +29,20 @@ public interface GraphicalPlayerDataObserver {
 
 
     /**
-     * Notifies PlayerDisplay to update displayed queued songs
+     * Notifies observer to swap element at {@code index} with {@code song}
      *
-     * @param songs
-     *        which will be displayed in ListView
+     * @param song
+     *        which is inserted at {@code index}
+     *
+     * @param index
+     *        at which {@code song} is inserted
      */
-    void updateQueuedSongs(ObservableList<MP3Song> songs);
+    void swapQueuedSongs(MP3Song song, int index);
+
+
+    /**
+     * Notifies observer to update text because of change in queue
+     */
+    void textNotify();
 
 }

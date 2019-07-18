@@ -275,7 +275,7 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
                     pool.submit(worker);
                 }
             }catch(IOException exception) {
-                System.out.println(exception);
+                System.out.println(exception.getMessage());
             }
 
 
@@ -323,6 +323,12 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
 
 
         /**
+         * UUID which identifies a device
+         */
+        private String UUID;
+
+
+        /**
          * When a client connects to server it will send a code and its UUID.<br>
          * This method saves UUID and appropriate writer to {@link #clientWriters}
          *
@@ -331,7 +337,8 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
          */
         private void saveWriter() throws IOException{
             bufferedReader.readLine();
-            clientWriters.put(bufferedReader.readLine(), bufferedWriter);
+            UUID = bufferedReader.readLine();
+            clientWriters.put(UUID, bufferedWriter);
         }
 
 
@@ -354,24 +361,11 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
 
         @Override
         public void run() {
-            System.out.println("Nalazim se u run metodi lets see what we got here: ");
             try {
                 String token = "";
-                update(Codes.SERVER_SONG_LIST);
-                //update(Codes.SERVER_QUEUE_LIST);
-                bufferedWriter.write("SERVER_QUEUE_LIST");
-                bufferedWriter.newLine();
-                for(Map.Entry<String, MP3Song> wqentry : subject.getWhomstQueued().entrySet()) {
-                    bufferedWriter.write(wqentry.getValue().toString());
-                    bufferedWriter.newLine();
-                    bufferedWriter.write(wqentry.getKey());
-                    bufferedWriter.newLine();
-                }
-                bufferedWriter.write("SERVER_BROADCAST_ENDED");
-                bufferedWriter.newLine();
-                bufferedWriter.flush();
-                update(Codes.SERVER_NOW_PLAYING);
-
+                communicationCodes.get(Codes.SERVER_SONG_LIST).execute(subject, bufferedWriter);
+                communicationCodes.get(Codes.SERVER_QUEUE_LIST).execute(subject, bufferedWriter);
+                communicationCodes.get(Codes.SERVER_NOW_PLAYING).execute(subject, bufferedWriter);
                 while(token != null) {
                     token = bufferedReader.readLine();
                     if(token.equals("CLIENT_QUEUE")) {
@@ -379,10 +373,11 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
                     }
                     else if(token.equals("CLIENT_DISCONNECT")) {
                         token = bufferedReader.readLine();
+
                         clientWriters.remove(token);
                     }
                 }
-                System.out.println("Kraj !");
+                clientWriters.remove(UUID);
             }catch(IOException exception) {
                 System.out.println("Greška at: " + exception.getMessage());
             }

@@ -1,5 +1,6 @@
 package gui;
 
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -203,8 +204,22 @@ public class PlayerDisplay implements GraphicalPlayerDataObserver, SwapObserver 
     }
 
     @Override
-    public void updateQueuedSongs(ObservableList<MP3Song> songs) {
-        queuedSongsView.setItems(songs);
+    public void swapQueuedSongs(MP3Song song, int index) {
+        Platform.runLater(() -> {
+            ObservableList<MP3Song> queuedSongs = queuedSongsView.getItems();
+            queuedSongs.set(index,song);
+            if(queuedSongs.size() > 0) {
+                nextInQueue.setText(queuedSongs.get(0).toString());
+            }
+            else {
+                nextInQueue.setText("");
+            }
+        });
+    }
+
+    @Override
+    public void textNotify() {
+        nextInQueue.setText(queuedSongsView.getItems().get(0).toString());
     }
 
     @Override

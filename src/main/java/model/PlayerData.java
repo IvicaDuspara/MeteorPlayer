@@ -281,9 +281,11 @@ public class PlayerData {
 
 
     /**
+     * Enqueues {@code song} which user identified with {@code queuerUUID} has requested.
+     * If a user doesn't have a song in queue, {@code song} is placed at the end of a queue.
+     * Otherwise old user's song will be swapped with a new one which user requested.
      *
-     *
-     *
+
      * @param queuerUUID
      *        identification of who put song in queue
      *
@@ -293,32 +295,25 @@ public class PlayerData {
      * @return
      *         index at which requested song is enqueued
      */
-    public synchronized int enqueueSong(String queuerUUID, String song) {
-        MP3Song requestedSong = null;
-        for(MP3Song  mp3Song : loadedSongs) {
-            if(mp3Song.toString().equals(song)) {
-                requestedSong = mp3Song;
-            }
-        }
-        final MP3Song song1 = requestedSong;
-        int result = 0;
+    public synchronized int enqueueSong(String queuerUUID, MP3Song song) {
         MP3Song token = whomstQueued.get(queuerUUID);
+        int result;
         if(token == null) {
             Platform.runLater(() -> {
-                queuedSongs.add(song1);
-            });
-            whomstQueued.put(queuerUUID,requestedSong);
-            result = queuedSongs.size() - 1;
-        }
-        else {
-            whomstQueued.put(queuerUUID,requestedSong);
-            result = new ArrayList<>(whomstQueued.values()).indexOf(requestedSong);
-            queuedSongs = FXCollections.observableArrayList(whomstQueued.values());
-            Platform.runLater(() -> {
-                for(GraphicalPlayerDataObserver o : graphicalPlayerDataObserversList) {
-                    o.updateQueuedSongs(queuedSongs);
+                queuedSongs.add(song);
+                for (GraphicalPlayerDataObserver gdpo : graphicalPlayerDataObserversList) {
+                    gdpo.textNotify();
                 }
             });
+            result = queuedSongs.size();
+            whomstQueued.put(queuerUUID, song);
+        }
+        else{
+            whomstQueued.put(queuerUUID, song);
+            result = queuedSongs.indexOf(token);
+            for(GraphicalPlayerDataObserver gdpo : graphicalPlayerDataObserversList) {
+                gdpo.swapQueuedSongs(song, result);
+            }
         }
         return result;
     }

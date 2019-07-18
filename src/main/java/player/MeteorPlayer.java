@@ -18,9 +18,11 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
 
     private static final int WIDTH_CONSTRAINT = 960;
 
-    private static final int BUTTON_BOX_PREFERED_WIDTH = 1920;
+    private static final int BUTTON_BOX_PREFERRED_WIDTH = 1920;
 
-    private static final int BUTTON_PREFERED_WIDTH = 50;
+    private static final int BUTTON_PREFERRED_WIDTH = 50;
+
+    private static final int BUTTON_PREFERRED_HEIGHT = 50;
 
     private Stage window;
 
@@ -83,6 +85,11 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
         window.show();
     }
 
+
+    /**
+     * Initializes GUI of {@code MeteorPlayer}.
+     * This includes layout, buttons, labels and functionality of those.
+     */
     private void initGUI() {
         initMenu();
         gridLayout.getColumnConstraints().addAll(new ColumnConstraints(WIDTH_CONSTRAINT),new ColumnConstraints(WIDTH_CONSTRAINT));
@@ -99,7 +106,10 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
 
 
         //Get right side: next in queue, queued songs
-        gridLayout.add(playerDisplay.getNextInQueue(),1,0);
+        HBox labelHBox2 = new HBox();
+        labelHBox2.getChildren().addAll(new Label(), playerDisplay.getNextInQueue());
+        labelHBox2.getStyleClass().add("labelHBox");
+        gridLayout.add(labelHBox2,1,0);
         gridLayout.add(playerDisplay.getQueuedSongsView(),1,2);
 
         //Bottom of display, buttons and seek bar.
@@ -109,9 +119,9 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
         playingRandom = new CheckBox("Random");
         playingRandom.setAllowIndeterminate(false);
         playingRandom.setSelected(false);
-        previousButton.setPrefSize(BUTTON_PREFERED_WIDTH, BUTTON_PREFERED_WIDTH);
-        playButton.setPrefSize(BUTTON_PREFERED_WIDTH, BUTTON_PREFERED_WIDTH);
-        nextButton.setPrefSize(BUTTON_PREFERED_WIDTH, BUTTON_PREFERED_WIDTH);
+        previousButton.setPrefSize(BUTTON_PREFERRED_WIDTH, BUTTON_PREFERRED_HEIGHT);
+        playButton.setPrefSize(BUTTON_PREFERRED_WIDTH, BUTTON_PREFERRED_HEIGHT);
+        nextButton.setPrefSize(BUTTON_PREFERRED_WIDTH, BUTTON_PREFERRED_HEIGHT);
 
 
         previousButton.setOnAction(l->playerData.playPreviousLoaded());
@@ -127,7 +137,7 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
         });
 
         HBox hb = new HBox();
-        hb.setPrefWidth(BUTTON_BOX_PREFERED_WIDTH);
+        hb.setPrefWidth(BUTTON_BOX_PREFERRED_WIDTH);
         hb.getChildren().addAll(previousButton,playButton,nextButton,playingRandom);
         hb.getStyleClass().add("hbox");
         GridPane twoGridder = new GridPane();

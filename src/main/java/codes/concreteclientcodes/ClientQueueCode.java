@@ -2,6 +2,7 @@ package codes.concreteclientcodes;
 
 import codes.IClientCode;
 import model.PlayerData;
+import song.MP3Song;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -19,8 +20,13 @@ public class ClientQueueCode implements IClientCode {
     public void execute(PlayerData playerData, Map<String, BufferedWriter> writers, BufferedReader reader) throws IOException {
         String UUID = reader.readLine();
         String songName = reader.readLine();
-        int result = playerData.enqueueSong(UUID, songName);
-        System.out.println("UUID: " + UUID + " songName: " + songName + " result: " + result);
+        MP3Song song = null;
+        for(MP3Song m : playerData.getLoadedSongs()) {
+            if(m.getFileName().equals(songName)) {
+                song = m;
+            }
+        }
+        int result = playerData.enqueueSong(UUID, song);
         for(Map.Entry<String, BufferedWriter> singleWriter : writers.entrySet()) {
             BufferedWriter writer = singleWriter.getValue();
             writer.write("SERVER_ENQUEUED");
