@@ -502,9 +502,12 @@ public class PlayerData {
      */
     public void closePlayerData() {
         pool.shutdown();
-        broadcaster.shutdown();
-        networkPool.shutdown();
-
+        if(broadcaster != null) {
+            broadcaster.shutdown();
+        }
+        if(networkPool != null) {
+            networkPool.shutdown();
+        }
     }
 
 

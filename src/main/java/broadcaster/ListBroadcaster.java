@@ -191,7 +191,8 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
         clientCodeMap = new HashMap<>();
         BufferedReader bufferedReader;
         try{
-            bufferedReader = Files.newBufferedReader(Paths.get("servercodes.txt"));
+            String code1resource = ListBroadcaster.class.getClassLoader().getResource("servercodes.txt").getFile();
+            bufferedReader = Files.newBufferedReader(Paths.get(code1resource));
             List<String> codes = new ArrayList<>();
             String line;
             while((line = bufferedReader.readLine()) != null) {
@@ -205,7 +206,8 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
                 communicationCodes.put(iConcrete.getClass().getSimpleName(), iConcrete);
             }
             bufferedReader.close();
-            bufferedReader = Files.newBufferedReader(Paths.get("clientcodes.txt"));
+            String code2resource = ListBroadcaster.class.getClassLoader().getResource("clientcodes.txt").getFile();
+            bufferedReader = Files.newBufferedReader(Paths.get(code2resource));
             codes.clear();
             while((line = bufferedReader.readLine()) != null) {
                 codes.add(line);
@@ -217,7 +219,7 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
                 IClientCode iConcrete = iClientCodeClass.getDeclaredConstructor().newInstance();
                 clientCodeMap.put(iConcrete.getClass().getSimpleName(), iConcrete);
             }
-//            bufferedReader.close();
+////            bufferedReader.close();
         }catch(IOException exception) {
             Platform.runLater(() -> {
                 Alert alert = new Alert(Alert.AlertType.ERROR,"Failed to load codes used for communication.\nBroadcaster will not turn on.", ButtonType.CLOSE);
