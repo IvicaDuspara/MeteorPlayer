@@ -405,16 +405,20 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
                 communicationCodes.get(Codes.SERVER_NOW_PLAYING).execute(subject, bufferedWriter);
                 while(token != null) {
                     token = bufferedReader.readLine();
+                    //TODO figure this out so it isn't that ugly
+                    if(token == null){
+                        break;
+                    }
                     if(token.equals("CLIENT_QUEUE")) {
                         clientCodeMap.get(Codes.CLIENT_QUEUE).execute(subject,clientWriters,bufferedReader);
                     }
                     else if(token.equals("CLIENT_DISCONNECT")) {
                         token = bufferedReader.readLine();
-
                         clientWriters.remove(token);
                     }
                 }
                 clientWriters.remove(UUID);
+                System.out.println("CURRENT SIZE OF WRITERS ARE: " + clientWriters.size());
             }catch(IOException exception) {
                 System.out.println("Greška at: " + exception.getMessage());
             }
