@@ -468,7 +468,7 @@ public class PlayerData {
             try {
                 mostRecentUpdate = pool.submit(populationJob).get();
                 loadedSongs.addAll(mostRecentUpdate);
-                notifyNetworkPlayerDataObservers(Codes.SERVER_SONG_LIST);
+                notifyNetworkPlayerDataObservers(Codes.SERVER_SONG_PARTIAL_LIST);
                 if(currentlyPlayingSong == null) {
                     playNextSong();
                 }

@@ -11,6 +11,6 @@ public class Codes {
      public final static String SERVER_MOVE_UP = "ServerMoveUpCode";
      public final static String SERVER_SONG_LIST = "ServerSongListCode";
      public final static String SERVER_QUEUE_LIST = "ServerQueueListCode";
-     public final static String SERVER_MY_QUEUED_SONG = "ServerMyQueuedSongCode";
+     public final static String SERVER_SONG_PARTIAL_LIST = "ServerSongPartialListCode";
      public final static String CLIENT_QUEUE = "ClientQueueCode";
 }
