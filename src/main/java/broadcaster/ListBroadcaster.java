@@ -403,12 +403,7 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
                 communicationCodes.get(Codes.SERVER_SONG_LIST).execute(subject, bufferedWriter);
                 communicationCodes.get(Codes.SERVER_QUEUE_LIST).execute(subject, bufferedWriter);
                 communicationCodes.get(Codes.SERVER_NOW_PLAYING).execute(subject, bufferedWriter);
-                while(token != null) {
-                    token = bufferedReader.readLine();
-                    //TODO figure this out so it isn't that ugly
-                    if(token == null){
-                        break;
-                    }
+                while((token = bufferedReader.readLine()) != null) {
                     if(token.equals("CLIENT_QUEUE")) {
                         clientCodeMap.get(Codes.CLIENT_QUEUE).execute(subject,clientWriters,bufferedReader);
                     }

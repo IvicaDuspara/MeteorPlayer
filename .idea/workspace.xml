@@ -53,16 +53,16 @@
           <entry key="codes" value="303" />
           <entry key="css" value="249" />
           <entry key="dummy" value="27" />
-          <entry key="java" value="46439" />
-          <entry key="txt" value="7256" />
+          <entry key="java" value="46501" />
+          <entry key="txt" value="7316" />
           <entry key="xml" value="22" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="249" />
-          <entry key="JAVA" value="46439" />
-          <entry key="PLAIN_TEXT" value="7586" />
+          <entry key="JAVA" value="46501" />
+          <entry key="PLAIN_TEXT" value="7646" />
           <entry key="XML" value="22" />
         </counts>
       </usages-collector>
@@ -73,8 +73,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/broadcaster/ListBroadcaster.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="409" column="30" selection-start-line="409" selection-start-column="30" selection-end-line="409" selection-end-column="30" />
+            <state relative-caret-position="259">
+              <caret line="405" column="68" selection-start-line="405" selection-start-column="68" selection-end-line="405" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -582,7 +582,14 @@
       <option name="project" value="LOCAL" />
       <updated>1563637313013</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="-Minor fix:&#10;   Broken pipe writing no longer occurs.">
+      <created>1563638968098</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1563638968098</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -619,7 +626,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added skin switching:&#10;- Ctrl+l -&gt; light skin&#10;- Ctrl+d -&gt; superior matrix skin" />
     <MESSAGE value="Refactored documentation on observers.&#10;Added checkbox for toggling random playing sequence" />
     <MESSAGE value="Tested feature for playing random songs.&#10;It didn't work correctly, and it does now.&#10;Tested changing between random and non random mode mid playing. Works as intended." />
     <MESSAGE value="Changed the return value of a job which opens songs.&#10;Previously it returned void, now it returns list of all loaded songs. &#10;This will be used for broadcasting of names of songs which were loaded." />
@@ -644,7 +650,8 @@
     <MESSAGE value="Fixed a bug where after opening additional songs,&#10;newly connected users would only receive most recently &#10;loaded songs." />
     <MESSAGE value="- When a server is started, a label will display address.&#10;- Removed console info on started server" />
     <MESSAGE value="Application now shuts down correctly:&#10; - Closes all executor pools, sockets and other such&#10; resources&#10; - Connected this to event where window is closed with x&#10; button" />
-    <option name="LAST_COMMIT_MESSAGE" value="Application now shuts down correctly:&#10; - Closes all executor pools, sockets and other such&#10; resources&#10; - Connected this to event where window is closed with x&#10; button" />
+    <MESSAGE value="-Minor fix:&#10;   Broken pipe writing no longer occurs." />
+    <option name="LAST_COMMIT_MESSAGE" value="-Minor fix:&#10;   Broken pipe writing no longer occurs." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/song/MainMain.java" />
@@ -900,8 +907,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/broadcaster/ListBroadcaster.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="409" column="30" selection-start-line="409" selection-start-column="30" selection-end-line="409" selection-end-column="30" />
+        <state relative-caret-position="259">
+          <caret line="405" column="68" selection-start-line="405" selection-start-column="68" selection-end-line="405" selection-end-column="68" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
