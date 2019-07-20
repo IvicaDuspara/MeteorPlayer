@@ -64,7 +64,7 @@ public class PlayerData {
 
     private Set<Path> keys;
 
-
+    private ExecutorService networkPool;
 
     /**
      * Constructs a new {@code PlayerData}
@@ -77,6 +77,7 @@ public class PlayerData {
         this.graphicalPlayerDataObserversList = new ArrayList<>();
         this.keys = new HashSet<>();
         pool = Executors.newSingleThreadExecutor();
+        networkPool = Executors.newSingleThreadExecutor();
         whomstQueued = new LinkedHashMap<>();
         this.randomSong = false;
         currentlyPlayingSongIndex = 0;
@@ -501,6 +502,9 @@ public class PlayerData {
      */
     public void closePlayerData() {
         pool.shutdown();
+        broadcaster.shutdown();
+        networkPool.shutdown();
+
     }
 
 
@@ -511,10 +515,7 @@ public class PlayerData {
         broadcaster = ListBroadcaster.getInstance();
         broadcaster.setSubject(this);
         addNetworkPlayerDataObserver(broadcaster);
-        Thread t = new Thread(() -> broadcaster.startBroadcast());
-        t.setDaemon(true);
-        t.setName("Broadcaster thread");
-        t.start();
+        networkPool.submit(() -> broadcaster.startBroadcast());
         for(GraphicalPlayerDataObserver gdpo : graphicalPlayerDataObserversList) {
             gdpo.updateServerInfo();
         }

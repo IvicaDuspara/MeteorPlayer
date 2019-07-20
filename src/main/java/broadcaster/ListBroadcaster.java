@@ -8,7 +8,7 @@ import javafx.scene.control.ButtonType;
 import model.Codes;
 import model.PlayerData;
 import observers.NetworkPlayerDataObserver;
-import song.MP3Song;
+
 
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
@@ -273,6 +273,11 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
 
 
     /**
+     * Starts broadcast.<br>
+     * Server will listen to connections on {@link #serverAddress}. When a connection is made {@link ClientWorker} will
+     * serve client. For more information see {@link ClientWorker}.<br>
+     * Server can not be started if it is already started.<br>
+     * If a server fails to start an exception will be thrown.
      *
      */
     public void startBroadcast() {
@@ -285,10 +290,8 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
                     pool.submit(worker);
                 }
             }catch(IOException exception) {
-                System.out.println(exception.getMessage());
+                isRunning = false;
             }
-
-
         }
         else {
             Platform.runLater(() -> {
@@ -298,6 +301,23 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
             });
         }
     }
+
+
+    /**
+     * Stops broadcast.<br>
+     * Server will stop broadcasting and receiving messages from clients.
+     *
+     */
+    public void shutdown() {
+        isRunning = false;
+        pool.shutdown();
+        try{
+            server.close();
+        }catch(IOException ex) {
+            System.out.println("Could not close list broadcaster.");
+        }
+    }
+
 
     @Override
     public void update(String code) {
@@ -313,6 +333,13 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
 
 
     /**
+     * Models a job which serves a client. When a client connects it will
+     * send it's unique ID which will be saved. Afterwards {@code ClientWorker}
+     * sends information on loaded songs, queued songs and currently playing song.<br>
+     *
+     * After this initial exchange is made, {@code ClientWorker} will be listening to any
+     * messages from client or it will send appropriate messages when a change occurs to client.<br>
+     * Changes are described in {@link codes.concreteservercodes concreteservercodes}
      *
      *
      * @author Ivica Duspara
