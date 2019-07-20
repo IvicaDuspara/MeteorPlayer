@@ -9,7 +9,6 @@ import model.Codes;
 import model.PlayerData;
 import observers.NetworkPlayerDataObserver;
 
-
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.net.*;
@@ -194,12 +193,13 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
         try{
             bufferedReader = Files.newBufferedReader(Paths.get("servercodes.txt"));
             List<String> codes = new ArrayList<>();
-            String line = "";
+            String line;
             while((line = bufferedReader.readLine()) != null) {
                 codes.add(line);
             }
             String packagePrefix = "codes.concreteservercodes.";
             for(String code : codes) {
+                @SuppressWarnings("unchecked")
                 Class<IServerCode> iCommunicationCodeClass = (Class<IServerCode>) Class.forName(packagePrefix + code);
                 IServerCode iConcrete = iCommunicationCodeClass.getDeclaredConstructor().newInstance();
                 communicationCodes.put(iConcrete.getClass().getSimpleName(), iConcrete);
@@ -212,6 +212,7 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
             }
             String packagePrefix2 = "codes.concreteclientcodes.";
             for(String code : codes) {
+                @SuppressWarnings("unchecked")
                 Class<IClientCode> iClientCodeClass = (Class<IClientCode>) Class.forName(packagePrefix2 + code);
                 IClientCode iConcrete = iClientCodeClass.getDeclaredConstructor().newInstance();
                 clientCodeMap.put(iConcrete.getClass().getSimpleName(), iConcrete);
@@ -416,17 +417,13 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
         @Override
         public void run() {
             try {
-                String token = "";
+                String token;
                 communicationCodes.get(Codes.SERVER_SONG_LIST).execute(subject, bufferedWriter);
                 communicationCodes.get(Codes.SERVER_QUEUE_LIST).execute(subject, bufferedWriter);
                 communicationCodes.get(Codes.SERVER_NOW_PLAYING).execute(subject, bufferedWriter);
                 while((token = bufferedReader.readLine()) != null) {
                     if(token.equals("CLIENT_QUEUE")) {
                         clientCodeMap.get(Codes.CLIENT_QUEUE).execute(subject,clientWriters,bufferedReader);
-                    }
-                    else if(token.equals("CLIENT_DISCONNECT")) {
-                        token = bufferedReader.readLine();
-                        clientWriters.remove(token);
                     }
                 }
                 clientWriters.remove(UUID);
