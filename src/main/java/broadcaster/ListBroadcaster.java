@@ -124,6 +124,17 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
 
 
     /**
+     * Returns address at which singleton {@code ListBroadcaster} is bound.
+     *
+     * @return
+     *         address at which singleton {@code ListBroadcaster} is bound
+     */
+    public String getServerAddress() {
+        return serverAddress.toString();
+    }
+
+
+    /**
      * Returns a String representing an IP address of this machine which begins with {@link #LOCAL_IP_16BIT_ALIKE} or
      * {@link #LOCAL_IP_24BIT_ALIKE} or {@link #LOCAL_IP_20BIT_ALIKE}.
      *
@@ -268,7 +279,6 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
         if(!isRunning) {
             isRunning = true;
             try{
-                System.out.println("Server is running at: " + serverAddress);
                 while(isRunning) {
                     Socket client = server.accept();
                     ClientWorker worker = new ClientWorker(client);

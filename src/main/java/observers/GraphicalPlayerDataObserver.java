@@ -45,4 +45,10 @@ public interface GraphicalPlayerDataObserver {
      */
     void textNotify();
 
+
+    /**
+     * Updates server information with address at which {@code PlayerData}'s server is running.
+     */
+    void updateServerInfo();
+
 }

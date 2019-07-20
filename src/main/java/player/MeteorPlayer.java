@@ -103,6 +103,7 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
         gridLayout.add(playerDisplay.getSearchBar(),0,1);
         gridLayout.add(playerDisplay.getLoadedSongsView(),0 ,2);
         gridLayout.add(playerDisplay.getSongInformation(),0,3);
+        gridLayout.add(playerDisplay.getServerInfo(),0,4);
 
 
         //Get right side: next in queue, queued songs

@@ -38,6 +38,8 @@ public class PlayerDisplay implements GraphicalPlayerDataObserver, SwapObserver 
 
     private Label nextInQueue;
 
+    private Label serverInfo;
+
     private SongInformation songInformation;
 
     private TextField searchBar;
@@ -85,6 +87,8 @@ public class PlayerDisplay implements GraphicalPlayerDataObserver, SwapObserver 
         this.searchBar.textProperty().addListener(ds);
         ds.addSwapObserver(this);
         this.playerDisplayObserverList = new ArrayList<>();
+        this.serverInfo = new Label();
+        serverInfo.getStyleClass().add("infoLabel");
     }
 
 
@@ -165,6 +169,18 @@ public class PlayerDisplay implements GraphicalPlayerDataObserver, SwapObserver 
 
 
     /**
+     * Returns a label which contains information about server.
+     *
+     * @return
+     *        label which contains information about server
+     *
+     */
+    public Label getServerInfo() {
+        return serverInfo;
+    }
+
+
+    /**
      * Adds {@code observer} to this {@code PlayerDisplay}
      *
      * @param observer
@@ -203,6 +219,7 @@ public class PlayerDisplay implements GraphicalPlayerDataObserver, SwapObserver 
         this.songInformation.updateSongInformation(currentSong);
     }
 
+
     @Override
     public void swapQueuedSongs(MP3Song song, int index) {
         Platform.runLater(() -> {
@@ -217,10 +234,18 @@ public class PlayerDisplay implements GraphicalPlayerDataObserver, SwapObserver 
         });
     }
 
+
     @Override
     public void textNotify() {
         nextInQueue.setText(queuedSongsView.getItems().get(0).toString());
     }
+
+
+    @Override
+    public void updateServerInfo() {
+        serverInfo.setText("Server running at: " + playerData.getServerAddress());
+    }
+
 
     @Override
     public void swapToQueriedView() {

@@ -169,6 +169,17 @@ public class PlayerData {
 
 
     /**
+     * Returns server address at which this {@code PlayerData} is running.
+     *
+     * @return
+     *        server address at which this {@code PlayerData} is running
+     */
+    public String getServerAddress() {
+        return broadcaster.getServerAddress();
+    }
+
+
+    /**
      * Sets {@code queriedSongs} to {@code songs}
      *
      * @param songs
@@ -504,6 +515,9 @@ public class PlayerData {
         t.setDaemon(true);
         t.setName("Broadcaster thread");
         t.start();
+        for(GraphicalPlayerDataObserver gdpo : graphicalPlayerDataObserversList) {
+            gdpo.updateServerInfo();
+        }
     }
 
 
