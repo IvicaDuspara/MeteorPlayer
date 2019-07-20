@@ -27,5 +27,8 @@ public abstract class SceneCommand extends MenuItem{
         this.setOnAction(e -> execute());
     }
 
+    /**
+     * Executes this {@code SceneCommand}
+     */
     public abstract void execute();
 }

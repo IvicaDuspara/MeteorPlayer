@@ -9,7 +9,7 @@ import java.io.IOException;
 
 
 /**
- * Sends list of recently updated songs to a client
+ * Sends list of recently updated songs to a client.
  *
  * @author Ivica Duspara
  * @version 1.0

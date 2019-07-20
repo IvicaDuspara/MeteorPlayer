@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * Sends list of currently queued songs to all clients.<br>
+ * Sends list of currently queued songs to client.<br>
  *
  * @author Ivica Duspara
  * @version 1.0

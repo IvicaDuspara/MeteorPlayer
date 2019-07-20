@@ -5,7 +5,6 @@ import model.PlayerData;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.util.Map;
 
 /**
  * Sends currently playing song to client.

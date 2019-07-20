@@ -32,5 +32,8 @@ public abstract class ModelCommand extends MenuItem{
         this.setOnAction(e -> execute());
     }
 
+    /**
+     * Executes this{@code ModelCommand}
+     */
     public abstract void execute();
 }

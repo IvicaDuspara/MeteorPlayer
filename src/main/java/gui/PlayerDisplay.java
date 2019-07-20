@@ -295,6 +295,10 @@ public class PlayerDisplay implements GraphicalPlayerDataObserver, SwapObserver 
 
         private Label genreLabel;
 
+        /**
+         * Constructs a new {@code SongInformation} object,
+         * adds CSS classes to labels and arranges them in a grid.
+         */
         SongInformation() {
             super();
             getStyleClass().add("rootPane");
@@ -316,6 +320,7 @@ public class PlayerDisplay implements GraphicalPlayerDataObserver, SwapObserver 
             add(genreLabel,1,0);
             add(yearLabel,1,1);
         }
+
 
         /**
          * Updates appropriate labels which display meta data of {@code song}

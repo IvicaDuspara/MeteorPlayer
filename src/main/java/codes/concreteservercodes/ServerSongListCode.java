@@ -8,7 +8,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 /**
- * Sends list of currently loaded songs to all of clients.<br>
+ * Sends list of currently loaded songs to a client.<br>
  *
  *
  * @author Ivica Duspara

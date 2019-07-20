@@ -23,7 +23,14 @@ import java.util.concurrent.Executors;
 
 
 /**
- * Broadcasts changes to clients.<br>
+ * Singleton class used as a broadcaster.<br>
+ * This class handles communication between server ({@code MeteorPlayer}) and clients (phones connected to server) by
+ * doing 2 jobs:
+ * <ol>
+ *     <li>It listens to client's request for a song and enqueues it in a queue and sends feedback information</li>
+ *     <li>When a change occurs on a server(loading songs, change in a queue) change is broadcast to listening clients </li>
+ * </ol>
+ *
  *
  * @author Ivica Duspara
  * @version 1.0
@@ -83,7 +90,7 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
 
 
     /**
-     * Socket address of this singleton.
+     * Socket address of {@code ListBroadcaster}.
      */
     private SocketAddress serverAddress;
 
@@ -95,7 +102,7 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
 
 
     /**
-     * Executor pool
+     * Executor pool used for serving clients
      */
     private ExecutorService pool;
 
@@ -106,6 +113,9 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
     private PlayerData subject;
 
 
+    /**
+     * {@code Map} for easy access to clients' writers
+     */
     private Map<String, BufferedWriter> clientWriters;
 
 
@@ -175,7 +185,7 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
 
 
     /**
-     * Loads codes found in {@link codes.concreteservercodes concreteservercodes} into {@link #communicationCodes}.<br>
+     * Loads codes found in {@link codes.concreteservercodes concreteservercodes} into {@link codes.concreteclientcodes concreteclientcodes}.<br>
      */
     private void loadCodes() {
         communicationCodes = new HashMap<>();
@@ -360,6 +370,12 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
 
 
         /**
+         * Socket representing a client
+         */
+        private Socket client;
+
+
+        /**
          * UUID which identifies a device
          */
         private String UUID;
@@ -389,6 +405,7 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
          *         if an error occurs while creating {@code ClientWorker}
          */
         ClientWorker(Socket client) throws IOException{
+            this.client = client;
             bufferedReader = new BufferedReader(new InputStreamReader(client.getInputStream(), Charset.forName("UTF-8")));
             bufferedWriter = new BufferedWriter(new OutputStreamWriter(client.getOutputStream(), Charset.forName("UTF-8")));
             saveWriter();
@@ -413,7 +430,7 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
                     }
                 }
                 clientWriters.remove(UUID);
-                System.out.println("CURRENT SIZE OF WRITERS ARE: " + clientWriters.size());
+                client.close();
             }catch(IOException exception) {
                 System.out.println("Greška at: " + exception.getMessage());
             }

@@ -31,9 +31,19 @@ import java.util.regex.Pattern;
 
     private ObservableList<MP3Song> queriedSongs;
 
+
+    /**
+     * Observers who are interested in swap.
+     */
     private List<SwapObserver> swapObserverList;
 
 
+    /**
+     * Constructs a new {@code DynamicSearch}
+     *
+     * @param playerData
+     *        On which seatch is performed
+     */
     DynamicSearch(PlayerData playerData) {
         this.loadedSongs = playerData.getLoadedSongs();
         this.queriedSongs = playerData.getQueriedSongs();
