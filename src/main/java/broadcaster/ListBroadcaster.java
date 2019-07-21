@@ -191,35 +191,24 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
         clientCodeMap = new HashMap<>();
         BufferedReader bufferedReader;
         try{
-            String code1resource = ListBroadcaster.class.getClassLoader().getResource("servercodes.txt").getFile();
-            bufferedReader = Files.newBufferedReader(Paths.get(code1resource));
-            List<String> codes = new ArrayList<>();
-            String line;
-            while((line = bufferedReader.readLine()) != null) {
-                codes.add(line);
-            }
+            ClassLoader loader = getClass().getClassLoader();
+            List<String> codes = Files.readAllLines(Paths.get("src/main/resources/servercodes.txt"));
             String packagePrefix = "codes.concreteservercodes.";
             for(String code : codes) {
                 @SuppressWarnings("unchecked")
-                Class<IServerCode> iCommunicationCodeClass = (Class<IServerCode>) Class.forName(packagePrefix + code);
+                Class<IServerCode> iCommunicationCodeClass = (Class<IServerCode>) loader.loadClass(packagePrefix + code);
                 IServerCode iConcrete = iCommunicationCodeClass.getDeclaredConstructor().newInstance();
                 communicationCodes.put(iConcrete.getClass().getSimpleName(), iConcrete);
             }
-            bufferedReader.close();
-            String code2resource = ListBroadcaster.class.getClassLoader().getResource("clientcodes.txt").getFile();
-            bufferedReader = Files.newBufferedReader(Paths.get(code2resource));
-            codes.clear();
-            while((line = bufferedReader.readLine()) != null) {
-                codes.add(line);
-            }
+
+            codes = Files.readAllLines(Paths.get("src/main/resources/clientcodes.txt"));
             String packagePrefix2 = "codes.concreteclientcodes.";
             for(String code : codes) {
                 @SuppressWarnings("unchecked")
-                Class<IClientCode> iClientCodeClass = (Class<IClientCode>) Class.forName(packagePrefix2 + code);
+                Class<IClientCode> iClientCodeClass = (Class<IClientCode>) loader.loadClass(packagePrefix2 + code);
                 IClientCode iConcrete = iClientCodeClass.getDeclaredConstructor().newInstance();
                 clientCodeMap.put(iConcrete.getClass().getSimpleName(), iConcrete);
             }
-////            bufferedReader.close();
         }catch(IOException exception) {
             Platform.runLater(() -> {
                 Alert alert = new Alert(Alert.AlertType.ERROR,"Failed to load codes used for communication.\nBroadcaster will not turn on.", ButtonType.CLOSE);
@@ -428,6 +417,7 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
                         clientCodeMap.get(Codes.CLIENT_QUEUE).execute(subject,clientWriters,bufferedReader);
                     }
                 }
+
                 clientWriters.remove(UUID);
                 client.close();
             }catch(IOException exception) {

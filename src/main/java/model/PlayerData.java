@@ -322,7 +322,15 @@ public class PlayerData {
         }
         else{
             whomstQueued.put(queuerUUID, song);
-            result = queuedSongs.indexOf(token);
+            Set<String> keyset = whomstQueued.keySet();
+            int i = 0;
+            for(String s : keyset) {
+                if(s.equals(queuerUUID)) {
+                    break;
+                }
+                i++;
+            }
+            result = i;
             for(GraphicalPlayerDataObserver gdpo : graphicalPlayerDataObserversList) {
                 gdpo.swapQueuedSongs(song, result);
             }

@@ -2,9 +2,6 @@
   <artifact type="jar" name="MeteorPlayer:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/MeteorPlayer_jar</output-path>
     <root id="archive" name="MeteorPlayer.jar">
-      <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
-      </element>
       <element id="module-output" name="MeteorPlayer" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/11/javafx-graphics-11.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/11/javafx-base-11.jar" path-in-jar="/" />
@@ -12,6 +9,12 @@
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/11/javafx-base-11-linux.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-media/11/javafx-media-11-linux.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-media/11/javafx-media-11.jar" path-in-jar="/" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:11" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:linux:11" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:11" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:linux:11" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-media:11" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-media:linux:11" />
     </root>
   </artifact>
 </component>
