@@ -2,6 +2,8 @@ package broadcaster;
 
 import codes.IClientCode;
 import codes.IServerCode;
+import codes.concreteclientcodes.ClientQueueCode;
+import codes.concreteservercodes.*;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -189,43 +191,18 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
     private void loadCodes() {
         communicationCodes = new HashMap<>();
         clientCodeMap = new HashMap<>();
-        BufferedReader bufferedReader;
-        try{
-            ClassLoader loader = getClass().getClassLoader();
-            List<String> codes = Files.readAllLines(Paths.get("src/main/resources/servercodes.txt"));
-            String packagePrefix = "codes.concreteservercodes.";
-            for(String code : codes) {
-                @SuppressWarnings("unchecked")
-                Class<IServerCode> iCommunicationCodeClass = (Class<IServerCode>) loader.loadClass(packagePrefix + code);
-                IServerCode iConcrete = iCommunicationCodeClass.getDeclaredConstructor().newInstance();
-                communicationCodes.put(iConcrete.getClass().getSimpleName(), iConcrete);
-            }
-
-            codes = Files.readAllLines(Paths.get("src/main/resources/clientcodes.txt"));
-            String packagePrefix2 = "codes.concreteclientcodes.";
-            for(String code : codes) {
-                @SuppressWarnings("unchecked")
-                Class<IClientCode> iClientCodeClass = (Class<IClientCode>) loader.loadClass(packagePrefix2 + code);
-                IClientCode iConcrete = iClientCodeClass.getDeclaredConstructor().newInstance();
-                clientCodeMap.put(iConcrete.getClass().getSimpleName(), iConcrete);
-            }
-        }catch(IOException exception) {
-            Platform.runLater(() -> {
-                Alert alert = new Alert(Alert.AlertType.ERROR,"Failed to load codes used for communication.\nBroadcaster will not turn on.", ButtonType.CLOSE);
-                alert.setTitle("Error loading codes");
-                alert.showAndWait();
-            });
-            throw new RuntimeException("Error loading codes.");
-        }
-        catch(ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException exception) {
-            Platform.runLater(() -> {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Error in instantiation of concrete codes.\nBroadcaster will not turn on.", ButtonType.CLOSE);
-                alert.setTitle("Error instantiating codes");
-                alert.showAndWait();
-            });
-            throw new RuntimeException("Error in instantiation of concrete codes.");
-        }
-
+        IServerCode i1 = new ServerSongListCode();
+        IServerCode i2 = new ServerSongPartialListCode();
+        IServerCode i3 = new ServerQueueListCode();
+        IServerCode i4 = new ServerNowPlayingCode();
+        IServerCode i5 = new ServerMoveUpCode();
+        IClientCode i6 = new ClientQueueCode();
+        communicationCodes.put(i1.getClass().getSimpleName(), i1);
+        communicationCodes.put(i2.getClass().getSimpleName(), i2);
+        communicationCodes.put(i3.getClass().getSimpleName(), i3);
+        communicationCodes.put(i4.getClass().getSimpleName(), i4);
+        communicationCodes.put(i5.getClass().getSimpleName(), i5);
+        clientCodeMap.put(i6.getClass().getSimpleName(), i6);
     }
 
 
