@@ -187,3 +187,9 @@
 .rootPane {
 	-fx-background-color: #FFFFFF;
 }
+
+.progress-bar {
+    -fx-text-box-border: #000000;
+    -fx-control-inner-background: #FFFFFF;
+    -fx-accent: #008020;
+}

@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import observers.GraphicalPlayerDataObserver;
@@ -68,6 +69,8 @@ public class PlayerData {
 
     private String removedUUID;
 
+    private ProgressBar bar;
+
     /**
      * Constructs a new {@code PlayerData}
      */
@@ -84,6 +87,7 @@ public class PlayerData {
         this.randomSong = false;
         currentlyPlayingSongIndex = -1;
         random = new Random();
+
     }
 
 

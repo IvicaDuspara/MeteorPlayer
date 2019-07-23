@@ -52,11 +52,6 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
 
     private ModelCommand startServerCommand;
 
-    private ModelCommand playSinanCommand;
-
-    private ModelCommand playBlackEyedPeasCommand;
-
-
     private Button previousButton;
 
     private Button playButton;
@@ -64,6 +59,8 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
     private Button nextButton;
 
     private CheckBox playingRandom;
+
+    private ProgressBar bar;
 
 
     @Override
@@ -142,7 +139,16 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
         hb.getChildren().addAll(previousButton,playButton,nextButton,playingRandom);
         hb.getStyleClass().add("hbox");
         GridPane twoGridder = new GridPane();
+        bar = new ProgressBar(0);
+
+        bar.setOnMouseClicked(value -> {
+            System.out.println("Lokacije su: obični,screen,scenski" + value.getX() + " " + value.getScreenX() + " " + value.getSceneX());
+            System.out.println("Lokacije su: obični,screen,scenski" + value.getY() + " " + value.getScreenY() + " " + value.getSceneY());
+            bar.setProgress(value.getX()/100);
+
+        });
         twoGridder.add(hb, 0, 0);
+        twoGridder.add(bar, 0,1);
         rootLayout.setBottom(twoGridder);
 
     }
