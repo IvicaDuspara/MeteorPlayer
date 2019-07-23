@@ -1,5 +1,6 @@
 .list-view {
 	-fx-background-color: #FFFFFF;
+	-fx-padding: 3px;
 }
 
 .list-cell:even {
@@ -88,12 +89,20 @@
 .infoLabel {
 	-fx-background-color: #FFFFFF;
 	-fx-text-fill: #008020;
+	-fx-padding: 5px;
 }
 
 .queueLabel {
 	-fx-background-color: #FFFFFF;
 	-fx-text-fill: #008020;
 	-fx-font-size: 12pt;
+}
+.timeLabel {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #000000;
+    -fx-font-size: 16pt;
+    -fx-padding: 10px;
+
 }
 .searchField {
 	-fx-background-color: #FFFFFF;

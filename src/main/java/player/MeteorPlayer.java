@@ -64,6 +64,8 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
 
     private ProgressBar bar;
 
+    private Label progress;
+
 
     @Override
     public void start(Stage primaryStage) {
@@ -136,10 +138,12 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
                 playerData.setRandomSong(false);
             }
         });
+        progress = new Label();
+        progress.getStyleClass().add("timeLabel");
 
         HBox hb = new HBox();
         hb.setPrefWidth(BUTTON_BOX_PREFERRED_WIDTH);
-        hb.getChildren().addAll(previousButton,playButton,nextButton,playingRandom);
+        hb.getChildren().addAll(previousButton,playButton,nextButton,playingRandom,progress);
         hb.getStyleClass().add("hbox");
         GridPane twoGridder = new GridPane();
         bar = new ProgressBar(0);
@@ -256,6 +260,13 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
     public void updateTimeProperty(Duration currentTime, Duration totalTime) {
         double currentSeconds = currentTime.toSeconds();
         double totalSeconds = totalTime.toSeconds();
+        int cm = (int) (currentSeconds / 60);
+        int tm = (int) (totalSeconds / 60);
+        int lcm = (int) (currentSeconds % 60);
+        int ltm = (int) (totalSeconds % 60);
+        String current = Integer.toString(cm) + ":" + Integer.toString(lcm);
+        String next = Integer.toString(tm) + ":" + Integer.toString(ltm);
+        progress.setText(current + " / " + next);
         bar.setProgress(currentSeconds/totalSeconds);
     }
 
