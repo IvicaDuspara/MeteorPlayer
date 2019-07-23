@@ -1,6 +1,7 @@
 package observers;
 
 import javafx.collections.ObservableList;
+import javafx.util.Duration;
 import song.MP3Song;
 
 /**
@@ -51,4 +52,15 @@ public interface GraphicalPlayerDataObserver {
      */
     void updateServerInfo();
 
+    /**
+     * Sends a request to {@link PlayerDisplayObserver observers} to update progress bar based
+     * on currentTime and totalTime.
+     *
+     * @param currentTime
+     *        of media which is currently playing
+     *
+     * @param totalTime
+     *        of media which is currently playing
+     */
+    void updateTimeProperty(Duration currentTime, Duration totalTime);
 }

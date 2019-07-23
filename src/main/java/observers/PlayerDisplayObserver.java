@@ -1,5 +1,7 @@
 package observers;
 
+import javafx.util.Duration;
+
 /**
  * An observer which is interested in changes of a view, such as swapping of loaded list with search result.<br>
  * View which broadcasts this changes is implemented in {@link gui.PlayerDisplay PlayerDisplay}
@@ -20,4 +22,6 @@ public interface PlayerDisplayObserver {
      * Restores a list to list of loaded songs.
      */
     void restoreToLoadedList();
+
+    void updateTimeProperty(Duration currentTime, Duration totalTime);
 }

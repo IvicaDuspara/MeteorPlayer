@@ -10,6 +10,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import model.PlayerData;
 import observers.PlayerDisplayObserver;
 
@@ -140,12 +141,11 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
         hb.getStyleClass().add("hbox");
         GridPane twoGridder = new GridPane();
         bar = new ProgressBar(0);
-
+        bar.setPrefWidth(BUTTON_BOX_PREFERRED_WIDTH);
         bar.setOnMouseClicked(value -> {
-            System.out.println("Lokacije su: obični,screen,scenski" + value.getX() + " " + value.getScreenX() + " " + value.getSceneX());
-            System.out.println("Lokacije su: obični,screen,scenski" + value.getY() + " " + value.getScreenY() + " " + value.getSceneY());
-            bar.setProgress(value.getX()/100);
-
+            double percentage = value.getX() / BUTTON_BOX_PREFERRED_WIDTH;
+            Duration total = playerData.getMediaPlayer().getMedia().getDuration();
+            playerData.getMediaPlayer().seek(total.multiply(percentage));
         });
         twoGridder.add(hb, 0, 0);
         twoGridder.add(bar, 0,1);
@@ -223,8 +223,6 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
     }
 
 
-
-
     /**
      * Closes MeteorPlayer.<br>
      * Also shuts down any active pool threads.
@@ -250,6 +248,12 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
         }
     }
 
+    @Override
+    public void updateTimeProperty(Duration currentTime, Duration totalTime) {
+        double currentSeconds = currentTime.toSeconds();
+        double totalSeconds = totalTime.toSeconds();
+        bar.setProgress(currentSeconds/totalSeconds);
+    }
 
 
     /**

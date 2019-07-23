@@ -9,6 +9,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 import observers.GraphicalPlayerDataObserver;
 import observers.NetworkPlayerDataObserver;
 import song.MP3Song;
@@ -69,7 +70,6 @@ public class PlayerData {
 
     private String removedUUID;
 
-    private ProgressBar bar;
 
     /**
      * Constructs a new {@code PlayerData}
@@ -87,7 +87,6 @@ public class PlayerData {
         this.randomSong = false;
         currentlyPlayingSongIndex = -1;
         random = new Random();
-
     }
 
 
@@ -206,6 +205,17 @@ public class PlayerData {
      */
     public String getRemovedUUID() {
         return removedUUID;
+    }
+
+
+    /**
+     * Returns {@code mediaPlayer} of this {@code PlayerData}
+     *
+     * @return
+     *        {@code mediaPlayer} of this {@code PlayerData}
+     */
+    public MediaPlayer getMediaPlayer() {
+        return mediaPlayer;
     }
 
 
@@ -448,6 +458,7 @@ public class PlayerData {
                 mediaPlayer.dispose();
             }
             mediaPlayer = new MediaPlayer(song.getMediaFile());
+            mediaPlayer.currentTimeProperty().addListener(ov -> updateProgressBarValues());
             mediaPlayer.setOnEndOfMedia(this::playNextSong);
         }
     }
@@ -494,6 +505,17 @@ public class PlayerData {
         }
     }
 
+
+    /**
+     * Notifies interested observers on changes of current time property of currently playing song
+     */
+    private void updateProgressBarValues() {
+        Duration currentTime = mediaPlayer.getCurrentTime();
+        Duration totalTime = mediaPlayer.getMedia().getDuration();
+        for(GraphicalPlayerDataObserver gdpo: graphicalPlayerDataObserversList) {
+            gdpo.updateTimeProperty(currentTime,totalTime);
+        }
+    }
 
     /**
      * Adds {@code songs} to {@link #loadedSongs} if they are not added already.<br>

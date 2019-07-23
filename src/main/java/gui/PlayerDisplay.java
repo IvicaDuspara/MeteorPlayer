@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.util.Duration;
 import model.PlayerData;
 import observers.GraphicalPlayerDataObserver;
 import observers.PlayerDisplayObserver;
@@ -246,6 +247,12 @@ public class PlayerDisplay implements GraphicalPlayerDataObserver, SwapObserver 
         serverInfo.setText("Server running at: " + playerData.getServerAddress());
     }
 
+    @Override
+    public void updateTimeProperty(Duration currentTime, Duration totalTime) {
+        for(PlayerDisplayObserver pdo : playerDisplayObserverList) {
+            pdo.updateTimeProperty(currentTime, totalTime);
+        }
+    }
 
     @Override
     public void swapToQueriedView() {
