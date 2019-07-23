@@ -20,6 +20,8 @@ public class ServerNowPlayingCode implements IServerCode {
             writer.newLine();
             writer.write(playerData.getCurrentlyPlayingSong().toString());
             writer.newLine();
+            writer.write(playerData.getRemovedUUID());
+            writer.newLine();
             writer.write("SERVER_BROADCAST_ENDED");
             writer.newLine();
             writer.flush();

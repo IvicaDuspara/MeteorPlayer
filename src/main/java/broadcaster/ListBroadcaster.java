@@ -289,7 +289,7 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
      */
     public void shutdown() {
         isRunning = false;
-        pool.shutdown();
+        pool.shutdownNow();
         try{
             server.close();
         }catch(IOException ex) {
@@ -300,14 +300,7 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
 
     @Override
     public void update(String code) {
-        try {
-            for(BufferedWriter writer : clientWriters.values()) {
-                communicationCodes.get(code).execute(subject, writer);
-            }
-        }catch (IOException exception) {
-            //TODO REMOVE THIS OR HANDLE IT PROPERLY
-            System.out.println("An error occured. YACK." + exception.getMessage());
-        }
+        pool.submit(new NotificationJob(code));
     }
 
 
@@ -399,6 +392,51 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
                 client.close();
             }catch(IOException exception) {
                 System.out.println("Greška at: " + exception.getMessage());
+            }
+        }
+    }
+
+
+    /**
+     * Models a job which is used to notify a client. More precisely
+     * this job will receive a notification from a subject {@link PlayerData}
+     * and send appropriate codes to observers (clients) from a broadcaster.<br>
+     *
+     * As notifications should not be sent from a GUI thread, they will be done from this job.
+     *
+     *
+     * @author Ivica Duspara
+     * @version 1.0
+     */
+    private class NotificationJob implements Runnable {
+
+        /**
+         * Code which describes an update
+         */
+        private String code;
+
+
+        /**
+         * Constructs a new {@code NotificationJob}
+         *
+         * @param code
+         *        which describes a job
+         */
+        NotificationJob(String code) {
+            this.code = code;
+        }
+
+
+
+        @Override
+        public void run() {
+            try {
+                for(BufferedWriter writer : clientWriters.values()) {
+                    communicationCodes.get(code).execute(subject, writer);
+                }
+            }catch (IOException exception) {
+                //TODO REMOVE THIS OR HANDLE IT PROPERLY
+                System.out.println("An error occured. YACK." + exception.getMessage());
             }
         }
     }

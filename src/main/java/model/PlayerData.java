@@ -66,6 +66,8 @@ public class PlayerData {
 
     private ExecutorService networkPool;
 
+    private String removedUUID;
+
     /**
      * Constructs a new {@code PlayerData}
      */
@@ -80,7 +82,7 @@ public class PlayerData {
         networkPool = Executors.newSingleThreadExecutor();
         whomstQueued = new LinkedHashMap<>();
         this.randomSong = false;
-        currentlyPlayingSongIndex = 0;
+        currentlyPlayingSongIndex = -1;
         random = new Random();
     }
 
@@ -192,6 +194,18 @@ public class PlayerData {
 
 
     /**
+     * Retruns UUID of a user whose song is now playing.
+     * If a song which is now playing was not queued, an empty string is returned.
+     *
+     * @return
+     *        UUID of a user whose song is now playing, otherwise an empty string.
+     */
+    public String getRemovedUUID() {
+        return removedUUID;
+    }
+
+
+    /**
      * Adds {@code networkPlayerDataObserver} to this {@code PlayerData}
      *
      * @param networkPlayerDataObserver
@@ -268,6 +282,7 @@ public class PlayerData {
             playNextQueued();
         }
         else {
+            removedUUID = "";
             playNextLoaded();
         }
     }
@@ -288,6 +303,7 @@ public class PlayerData {
             }
         }
         whomstQueued.remove(key);
+        removedUUID = key;
         return removed;
     }
 
