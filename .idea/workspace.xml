@@ -7,11 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1008d3e-10db-4d65-8be4-b1a277ca8749" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/icon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/PlayerDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/PlayerDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/PlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/PlayerData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/observers/GraphicalPlayerDataObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/observers/GraphicalPlayerDataObserver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/observers/PlayerDisplayObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/observers/PlayerDisplayObserver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/player/MeteorPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/player/MeteorPlayer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -40,6 +37,7 @@
           <entry key="codes" value="2" />
           <entry key="css" value="9" />
           <entry key="java" value="206" />
+          <entry key="png" value="1" />
           <entry key="txt" value="9" />
           <entry key="xml" value="3" />
         </counts>
@@ -47,6 +45,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="9" />
+          <entry key="Image" value="1" />
           <entry key="JAVA" value="206" />
           <entry key="PLAIN_TEXT" value="11" />
           <entry key="XML" value="3" />
@@ -57,16 +56,16 @@
           <entry key="codes" value="303" />
           <entry key="css" value="431" />
           <entry key="dummy" value="27" />
-          <entry key="java" value="52391" />
-          <entry key="txt" value="8952" />
+          <entry key="java" value="52431" />
+          <entry key="txt" value="9288" />
           <entry key="xml" value="30" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="431" />
-          <entry key="JAVA" value="52391" />
-          <entry key="PLAIN_TEXT" value="9282" />
+          <entry key="JAVA" value="52431" />
+          <entry key="PLAIN_TEXT" value="9618" />
           <entry key="XML" value="30" />
         </counts>
       </usages-collector>
@@ -77,8 +76,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/player/MeteorPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="64">
-              <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+            <state relative-caret-position="315">
+              <caret line="151" column="13" selection-start-line="151" selection-start-column="13" selection-end-line="151" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -249,14 +251,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MeteorPlayer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MeteorPlayer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="player" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MeteorPlayer" type="b2602c69:ProjectViewProjectNode" />
@@ -609,21 +603,28 @@
       <option name="project" value="LOCAL" />
       <updated>1563885370334</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="- Added a listener to MediaPlayer which updates progress&#10;bar with a current time of a currently playing song&#10;- Progress bar is now also clickable and usable as a&#10;seeker.">
+      <created>1563888925680</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1563888925680</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1922" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31216648" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.31216648" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Learn" order="3" weight="0.32977587" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32903227" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49893278" visible="true" weight="0.32903227" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49893278" visible="true" weight="0.32903227" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -646,7 +647,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added network start command, network menu and shortcut for starting it." />
     <MESSAGE value="Started implementing networking feature.&#10;Client can connect with an app but currently no data is transmitted.&#10;This version has no functional networking.&#10;&#10;Refactored some code in ListBroadcaster:&#10; - Generic factory for loading codes is now a separate method.&#10; - Exception catching(when starting server) is now&#10; handled properly. Client will be warned with an alert&#10; window!" />
     <MESSAGE value="When creating wrapping client's socket's I/O streams&#10;they are now wrapped with UTF-8 decoding." />
     <MESSAGE value="ListBroadcaster no longer receives subject through a&#10;method. Now it has a reference to concrete subject." />
@@ -671,7 +671,8 @@
     <MESSAGE value="Removed codes loading via reflection api for following &#10;reasons:&#10;1.) Loading a resource / loading it as a stream never &#10;worked when i packed it into a jar&#10;2.) My sanity was disappearing&#10;3.) My sanity was disapperaing" />
     <MESSAGE value="PlayerData now has a new field - removeUUID which is UUID&#10;of a client whose song is currently playing.&#10;&#10;This field is used in ServerNowPlayingCode which was &#10;updated to send this information.&#10;&#10;Added a new job - NotificationJob which is used to send&#10;codes to clients. Codes are no longer sent from GUI&#10;thread." />
     <MESSAGE value="Added a progress bar, and stylized it in css.&#10;Progress bar is not yet functional" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a progress bar, and stylized it in css.&#10;Progress bar is not yet functional" />
+    <MESSAGE value="- Added a listener to MediaPlayer which updates progress&#10;bar with a current time of a currently playing song&#10;- Progress bar is now also clickable and usable as a&#10;seeker." />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added a listener to MediaPlayer which updates progress&#10;bar with a current time of a currently playing song&#10;- Progress bar is now also clickable and usable as a&#10;seeker." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/song/MainMain.java" />
@@ -895,10 +896,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/icon.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/player/MeteorPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+        <state relative-caret-position="315">
+          <caret line="151" column="13" selection-start-line="151" selection-start-column="13" selection-end-line="151" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

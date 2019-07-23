@@ -5,6 +5,7 @@ import gui.PlayerDisplay;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -68,6 +69,7 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
     public void start(Stage primaryStage) {
         window = primaryStage;
         window.setTitle("Meteor");
+        window.getIcons().add(new Image("icon.png"));
         rootLayout = new BorderPane();
         rootLayout.getStyleClass().add("rootPane");
         gridLayout = new GridPane();
@@ -144,8 +146,10 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
         bar.setPrefWidth(BUTTON_BOX_PREFERRED_WIDTH);
         bar.setOnMouseClicked(value -> {
             double percentage = value.getX() / BUTTON_BOX_PREFERRED_WIDTH;
-            Duration total = playerData.getMediaPlayer().getMedia().getDuration();
-            playerData.getMediaPlayer().seek(total.multiply(percentage));
+            if(playerData.getMediaPlayer() != null) {
+                Duration total = playerData.getMediaPlayer().getMedia().getDuration();
+                playerData.getMediaPlayer().seek(total.multiply(percentage));
+            }
         });
         twoGridder.add(hb, 0, 0);
         twoGridder.add(bar, 0,1);
