@@ -264,8 +264,8 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
         int tm = (int) (totalSeconds / 60);
         int lcm = (int) (currentSeconds % 60);
         int ltm = (int) (totalSeconds % 60);
-        String current = Integer.toString(cm) + ":" + Integer.toString(lcm);
-        String next = Integer.toString(tm) + ":" + Integer.toString(ltm);
+        String current = String.format("%02d:%02d",cm,lcm);
+        String next = String.format("%02d:%02d",tm,ltm);
         progress.setText(current + " / " + next);
         bar.setProgress(currentSeconds/totalSeconds);
     }
