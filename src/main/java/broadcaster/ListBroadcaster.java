@@ -2,7 +2,10 @@ package broadcaster;
 
 import codes.IClientCode;
 import codes.IServerCode;
+import codes.concreteclientcodes.ClientNowPlayingRequestCode;
 import codes.concreteclientcodes.ClientQueueCode;
+import codes.concreteclientcodes.ClientQueueRequestCode;
+import codes.concreteclientcodes.ClientSongRequestCode;
 import codes.concreteservercodes.*;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
@@ -12,11 +15,8 @@ import model.PlayerData;
 import observers.NetworkPlayerDataObserver;
 
 import java.io.*;
-import java.lang.reflect.InvocationTargetException;
 import java.net.*;
 import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
@@ -34,7 +34,7 @@ import java.util.concurrent.Executors;
  *
  *
  * @author Ivica Duspara
- * @version 1.0
+ * @version 1.1
  */
 public class ListBroadcaster implements NetworkPlayerDataObserver {
 
@@ -82,6 +82,7 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
      * describe client's request which changes {@link model.PlayerData PlayerData model}
      */
     private Map<String, IClientCode> clientCodeMap;
+
 
 
     /**
@@ -146,6 +147,17 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
 
 
     /**
+     * Returns a {@code Map} containing {@code IServerCodes} of {@code ListBroadcaster}.
+     *
+     * @return
+     *         a {@code Map} containing {@code IServerCodes} of {@code ListBroadcaster}
+     */
+    public Map<String, IServerCode> getCommunicationCodes() {
+        return communicationCodes;
+    }
+
+
+    /**
      * Returns a String representing an IP address of this machine which begins with {@link #LOCAL_IP_16BIT_ALIKE} or
      * {@link #LOCAL_IP_24BIT_ALIKE} or {@link #LOCAL_IP_20BIT_ALIKE}.
      *
@@ -197,12 +209,18 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
         IServerCode i4 = new ServerNowPlayingCode();
         IServerCode i5 = new ServerMoveUpCode();
         IClientCode i6 = new ClientQueueCode();
+        IClientCode i7 = new ClientSongRequestCode();
+        IClientCode i8 = new ClientQueueRequestCode();
+        IClientCode i9 = new ClientNowPlayingRequestCode();
         communicationCodes.put(i1.getClass().getSimpleName(), i1);
         communicationCodes.put(i2.getClass().getSimpleName(), i2);
         communicationCodes.put(i3.getClass().getSimpleName(), i3);
         communicationCodes.put(i4.getClass().getSimpleName(), i4);
         communicationCodes.put(i5.getClass().getSimpleName(), i5);
         clientCodeMap.put(i6.getClass().getSimpleName(), i6);
+        clientCodeMap.put(i7.getClass().getSimpleName(), i7);
+        clientCodeMap.put(i8.getClass().getSimpleName(), i8);
+        clientCodeMap.put(i9.getClass().getSimpleName(), i9);
     }
 
 
@@ -379,23 +397,28 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
         public void run() {
             try {
                 String token;
-                communicationCodes.get(Codes.SERVER_SONG_LIST).execute(subject, bufferedWriter);
-                communicationCodes.get(Codes.SERVER_QUEUE_LIST).execute(subject, bufferedWriter);
-                communicationCodes.get(Codes.SERVER_NOW_PLAYING).execute(subject, bufferedWriter);
+                //communicationCodes.get(Codes.SERVER_SONG_LIST).execute(subject, bufferedWriter);
+                //communicationCodes.get(Codes.SERVER_QUEUE_LIST).execute(subject, bufferedWriter);
+                //communicationCodes.get(Codes.SERVER_NOW_PLAYING).execute(subject, bufferedWriter);
                 while((token = bufferedReader.readLine()) != null) {
+                    System.out.println("Dobio sam token: " + token);
                     if(token.equals("CLIENT_QUEUE")) {
-                        clientCodeMap.get(Codes.CLIENT_QUEUE).execute(subject,clientWriters,bufferedReader);
+                        clientCodeMap.get(Codes.getInstance().getCodeValue(token)).execute(subject,clientWriters,bufferedReader);
+                    }
+                    else {
+                        clientCodeMap.get(Codes.getInstance().getCodeValue(token)).execute(subject,bufferedWriter,bufferedReader);
+                        System.out.println("Resolveam token u elseu: " + token);
                     }
                 }
 
                 clientWriters.remove(UUID);
                 client.close();
-            }catch(IOException exception) {
+            }catch(IOException | NoSuchMethodException exception) {
                 System.out.println("Greška at: " + exception.getMessage());
+
             }
         }
     }
-
 
     /**
      * Models a job which is used to notify a client. More precisely
@@ -440,4 +463,7 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
             }
         }
     }
+
+
+
 }

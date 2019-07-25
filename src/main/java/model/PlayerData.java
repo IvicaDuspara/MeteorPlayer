@@ -52,6 +52,8 @@ public class PlayerData {
 
     private ListBroadcaster broadcaster;
 
+    private Codes codes;
+
     private int currentlyPlayingSongIndex;
 
     private MP3Song currentlyPlayingSong;
@@ -87,6 +89,7 @@ public class PlayerData {
         this.randomSong = false;
         currentlyPlayingSongIndex = -1;
         random = new Random();
+        codes = Codes.getInstance();
     }
 
 
@@ -413,7 +416,7 @@ public class PlayerData {
      */
     private void playNextQueued() {
         MP3Song top = dequeueSong();
-        notifyNetworkPlayerDataObservers(Codes.SERVER_MOVE_UP);
+        notifyNetworkPlayerDataObservers(codes.getCodeValue("SERVER_MOVE_UP"));
         if(queuedSongs.isEmpty()) {
             nextInQueueSong = null;
         }
@@ -437,7 +440,7 @@ public class PlayerData {
     private void playSong(MP3Song song) {
         prepareMediaPlayer(song);
         mediaPlayer.play();
-        notifyNetworkPlayerDataObservers(Codes.SERVER_NOW_PLAYING);
+        notifyNetworkPlayerDataObservers(codes.getCodeValue("SERVER_NOW_PLAYING"));
         song.extractMetaData();
         notifyGraphicalPlayerDataObservers();
     }
@@ -530,7 +533,7 @@ public class PlayerData {
             try {
                 mostRecentUpdate = pool.submit(populationJob).get();
                 loadedSongs.addAll(mostRecentUpdate);
-                notifyNetworkPlayerDataObservers(Codes.SERVER_SONG_PARTIAL_LIST);
+                notifyNetworkPlayerDataObservers(codes.getCodeValue("SERVER_SONG_PARTIAL_LIST"));
                 if(currentlyPlayingSong == null) {
                     playNextSong();
                 }

@@ -1,6 +1,5 @@
 package codes.concreteclientcodes;
 
-import codes.IClientCode;
 import model.PlayerData;
 import song.MP3Song;
 
@@ -11,18 +10,9 @@ import java.util.Map;
 
 
 /**
- * Concrete Client Code.<br>
- * Client will send this code when she/he wishes to enqueue a song.<br>
  *
- * {@code ClientQueueCode} will handle sent information by picking a song which is requested.
- * After song is placed in a queue, information is sent back to client.<br>
- *
- * For method which enqueues a song see {@link PlayerData#enqueueSong(String, MP3Song) enqueueSong}
- *
- * @author Ivica Duspara
- * @version 1.0
  */
-public class ClientQueueCode implements IClientCode {
+public class ClientQueueCode extends AbstractClientBroadcastCode {
 
 
     @Override
