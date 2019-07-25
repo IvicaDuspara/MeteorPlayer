@@ -120,6 +120,11 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
      */
     private Map<String, BufferedWriter> clientWriters;
 
+    /**
+     * {@link Codes} reference used in broadcaster
+     */
+    private Codes codes;
+
 
     /**
      * Returns singleton instance of {@code ListBroadcaster}
@@ -255,6 +260,7 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
             });
             throw new RuntimeException(exception.getMessage());
         }
+        codes = Codes.getInstance();
     }
 
 
@@ -397,16 +403,13 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
         public void run() {
             try {
                 String token;
-                //communicationCodes.get(Codes.SERVER_SONG_LIST).execute(subject, bufferedWriter);
-                //communicationCodes.get(Codes.SERVER_QUEUE_LIST).execute(subject, bufferedWriter);
-                //communicationCodes.get(Codes.SERVER_NOW_PLAYING).execute(subject, bufferedWriter);
                 while((token = bufferedReader.readLine()) != null) {
                     System.out.println("Dobio sam token: " + token);
                     if(token.equals("CLIENT_QUEUE")) {
-                        clientCodeMap.get(Codes.getInstance().getCodeValue(token)).execute(subject,clientWriters,bufferedReader);
+                        clientCodeMap.get(codes.getCodeValue(token)).execute(subject,clientWriters,bufferedReader);
                     }
                     else {
-                        clientCodeMap.get(Codes.getInstance().getCodeValue(token)).execute(subject,bufferedWriter,bufferedReader);
+                        clientCodeMap.get(codes.getCodeValue(token)).execute(subject,bufferedWriter,bufferedReader);
                         System.out.println("Resolveam token u elseu: " + token);
                     }
                 }
@@ -419,6 +422,7 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
             }
         }
     }
+
 
     /**
      * Models a job which is used to notify a client. More precisely
@@ -448,7 +452,6 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
         NotificationJob(String code) {
             this.code = code;
         }
-
 
 
         @Override
