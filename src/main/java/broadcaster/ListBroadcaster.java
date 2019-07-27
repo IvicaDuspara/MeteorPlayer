@@ -404,13 +404,11 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
             try {
                 String token;
                 while((token = bufferedReader.readLine()) != null) {
-                    System.out.println("Dobio sam token: " + token);
                     if(token.equals("CLIENT_QUEUE")) {
                         clientCodeMap.get(codes.getCodeValue(token)).execute(subject,clientWriters,bufferedReader);
                     }
                     else {
                         clientCodeMap.get(codes.getCodeValue(token)).execute(subject,bufferedWriter,bufferedReader);
-                        System.out.println("Resolveam token u elseu: " + token);
                     }
                 }
 
