@@ -76,7 +76,7 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
         rootLayout.getStyleClass().add("rootPane");
         gridLayout = new GridPane();
         rootLayout.setCenter(gridLayout);
-        scene = new Scene(rootLayout,800,800);
+        scene = new Scene(rootLayout,600,600);
         scene.getStylesheets().add(STYLE_SHEET_MATRIX);
         playerData = new PlayerData();
         playerDisplay = new PlayerDisplay(playerData);
