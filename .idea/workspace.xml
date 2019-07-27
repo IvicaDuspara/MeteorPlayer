@@ -8,7 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c1008d3e-10db-4d65-8be4-b1a277ca8749" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/broadcaster/ListBroadcaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/broadcaster/ListBroadcaster.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -56,7 +55,7 @@
           <entry key="css" value="618" />
           <entry key="dummy" value="27" />
           <entry key="java" value="57660" />
-          <entry key="txt" value="10564" />
+          <entry key="txt" value="10709" />
           <entry key="xml" value="41" />
         </counts>
       </usages-collector>
@@ -64,7 +63,7 @@
         <counts>
           <entry key="CSS" value="618" />
           <entry key="JAVA" value="57660" />
-          <entry key="PLAIN_TEXT" value="10894" />
+          <entry key="PLAIN_TEXT" value="11039" />
           <entry key="XML" value="41" />
         </counts>
       </usages-collector>
@@ -211,97 +210,6 @@
               <item name="MeteorPlayer" type="b2602c69:ProjectViewProjectNode" />
               <item name="MeteorPlayer" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="MeteorPlayer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MeteorPlayer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MeteorPlayer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MeteorPlayer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MeteorPlayer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MeteorPlayer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MeteorPlayer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MeteorPlayer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="broadcaster" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MeteorPlayer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MeteorPlayer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="codes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MeteorPlayer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MeteorPlayer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="codes" type="462c0819:PsiDirectoryNode" />
-              <item name="concreteclientcodes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MeteorPlayer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MeteorPlayer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="codes" type="462c0819:PsiDirectoryNode" />
-              <item name="concreteservercodes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MeteorPlayer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MeteorPlayer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="commands" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MeteorPlayer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MeteorPlayer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MeteorPlayer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MeteorPlayer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MeteorPlayer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MeteorPlayer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="player" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MeteorPlayer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MeteorPlayer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -313,7 +221,7 @@
     <property name="jdk.selected.JAVA_MODULE" value="9" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/codes" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.folding" />
@@ -689,21 +597,27 @@
       <option name="project" value="LOCAL" />
       <updated>1564071011429</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Removed some print statements which were used for logging.&#10;I am aware that there is a thing called debugger and a &#10;thing called logger.">
+      <created>1564215470729</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1564215470729</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1922" height="1053" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3420491" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3420491" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Learn" order="3" weight="0.32977587" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32903227" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49893278" visible="true" weight="0.32903227" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49893278" weight="0.32903227" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -726,7 +640,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed part where network broadcaster was not registered&#10;as observer on player data.&#10;&#10;Opening of songs currently crashes app.&#10;Also no more than 2 users can be connected." />
     <MESSAGE value="ServerQueueListCode now works differently.&#10;It will now send list in format of (song, who queued it).&#10;&#10;This reflection is applied in meteor remote app.&#10;&#10;Added getters for 2 fields (current song and its' index) &#10;in PlayerData." />
     <MESSAGE value="Major refactoring:&#10; - Removed ICommunicationCode. It is now replaced by two&#10; interfaces IServerCode and IClientCode.&#10; &#10; - IServerCode are types of code which server initiates:&#10;  - opening of songs&#10;  - change of currently played song&#10;  - change in a queue.&#10;  &#10;These type of codes require only to write to clients.&#10;&#10;- IClientCode are types of code in which client sends a &#10;request, server does the job and then notifies everyone&#10;who is connected.&#10;&#10;To reflect these changes, generic factory/api reflection&#10;loading method in ListBroadcaster was changed. It will&#10;now read separate codes from servercodes.txt and &#10;clientcodes.txt" />
     <MESSAGE value="Changed servercodes.txt and clientcodes.txt&#10;App can now be run properly" />
@@ -751,7 +664,8 @@
     <MESSAGE value="String which displays time is now adjusted to always&#10;display 2 digits for minutes and seconds (leading zeroes)" />
     <MESSAGE value="Major refactoring in this commit:&#10; - Due to changes in way remote works, client codes&#10; are split into two class hierarchies. This is a subject&#10; to change&#10; - Codes class is now a singleton.&#10; - PlayerData and ListBroadcaster now use Codes Singleton&#10; - When a client connects, server will no longer eagerly &#10; send loaded songs and queued songs. Instread it will wait&#10; for client's request." />
     <MESSAGE value="- Minor code refactoring&#10;- Changed javadoc in Codes and added additional&#10;javadoc in ListBroadcaster." />
-    <option name="LAST_COMMIT_MESSAGE" value="- Minor code refactoring&#10;- Changed javadoc in Codes and added additional&#10;javadoc in ListBroadcaster." />
+    <MESSAGE value="Removed some print statements which were used for logging.&#10;I am aware that there is a thing called debugger and a &#10;thing called logger." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed some print statements which were used for logging.&#10;I am aware that there is a thing called debugger and a &#10;thing called logger." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/song/MainMain.java" />
