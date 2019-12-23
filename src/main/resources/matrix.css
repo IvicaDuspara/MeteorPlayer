@@ -77,9 +77,18 @@
 
 .labelHBox {
 	-fx-background-color: #0D0208;
-	-fx-padding: 15;
-	-fx-spacing: 250;
-
+	-fx-padding: 7;
+	-fx-spacing: 15;
+}
+.labelVBox {
+    -fx-background-color: #0d0208;
+    -fx-padding: 10;
+    -fx-spacing: 7;
+}
+.extraInfoLabel{
+    -fx-background-color: #0D0208;
+    -fx-text-fill: #00FF41;
+    -fx-font-size: 16pt;
 }
 .nowPlayingLabel {
 	-fx-background-color: #0D0208;

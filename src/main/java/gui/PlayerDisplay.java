@@ -104,6 +104,7 @@ public class PlayerDisplay implements GraphicalPlayerDataObserver, SwapObserver 
     }
 
 
+
     /**
      * Returns {@code Label} which indicates which {@link MP3Song} is next in queue.
      *

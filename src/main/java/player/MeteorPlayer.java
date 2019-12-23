@@ -6,10 +6,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.PlayerData;
@@ -99,7 +96,9 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
 
         //Get left side: Search bar, currently playing, loaded songs, information
         HBox labelHBox = new HBox();
-        labelHBox.getChildren().addAll(new Label(), playerDisplay.getNowPlaying());
+        Label extraInfo = new Label("Now playing:");
+        extraInfo.getStyleClass().add("extraInfoLabel");
+        labelHBox.getChildren().addAll(extraInfo,playerDisplay.getNowPlaying());
         labelHBox.getStyleClass().add("labelHBox");
         gridLayout.add(labelHBox,0,0);
         gridLayout.add(playerDisplay.getSearchBar(),0,1);
@@ -110,8 +109,10 @@ public class MeteorPlayer extends Application implements PlayerDisplayObserver {
 
         //Get right side: next in queue, queued songs
         HBox labelHBox2 = new HBox();
-        labelHBox2.getChildren().addAll(new Label(), playerDisplay.getNextInQueue());
+        Label extraInfo2 = new Label("Next song:");
+        extraInfo2.getStyleClass().add("extraInfoLabel");
         labelHBox2.getStyleClass().add("labelHBox");
+        labelHBox2.getChildren().addAll(extraInfo2,playerDisplay.getNextInQueue());
         gridLayout.add(labelHBox2,1,0);
         gridLayout.add(playerDisplay.getQueuedSongsView(),1,2);
 

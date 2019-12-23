@@ -319,6 +319,13 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
         }catch(IOException ex) {
             System.out.println("Could not close list broadcaster.");
         }
+        for(BufferedWriter cw : clientWriters.values()) {
+            try{
+                cw.close();
+            }catch(IOException ex) {
+                System.out.println("Could not close a writer.");
+            }
+        }
     }
 
 
