@@ -411,12 +411,17 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
                         clientCodeMap.get(codes.getCodeValue(token)).execute(subject,bufferedWriter,bufferedReader);
                     }
                 }
-
                 clientWriters.remove(UUID);
                 client.close();
             }catch(IOException | NoSuchMethodException exception) {
                 System.out.println("Greška at: " + exception.getMessage());
-
+            }finally {
+                clientWriters.remove(UUID);
+                try{
+                    client.close();
+                }catch(IOException ex) {
+                    System.out.println("Couldn't close a socket, ignoring it.");
+                }
             }
         }
     }
@@ -454,14 +459,15 @@ public class ListBroadcaster implements NetworkPlayerDataObserver {
 
         @Override
         public void run() {
-            try {
-                for(BufferedWriter writer : clientWriters.values()) {
+            for(BufferedWriter writer: clientWriters.values()) {
+                try {
                     communicationCodes.get(code).execute(subject, writer);
+                }catch (IOException exception) {
+                    System.out.println("JVM yeeted an exception." + exception.getMessage());
+                    System.out.println("It is a possibility that app can't write something out. Someone possibly disconnected.");
                 }
-            }catch (IOException exception) {
-                //TODO REMOVE THIS OR HANDLE IT PROPERLY
-                System.out.println("An error occured. YACK." + exception.getMessage());
             }
+
         }
     }
 
